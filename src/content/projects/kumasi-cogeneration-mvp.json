@@ -1,0 +1,24 @@
+{
+  "slug": "kumasi-cogeneration-mvp",
+  "title": "Kumasi Cogeneration Project - Monitoring and Verification Plan",
+  "category": "Energy and Green Transition",
+  "location": "Kumasi, Ghana",
+  "duration": "2006-2008",
+  "stats": [
+    {
+      "value": "1",
+      "label": "M and V Plan"
+    },
+    {
+      "value": "Baseline",
+      "label": "Emissions Data"
+    }
+  ],
+  "challenge": "The project required a robust monitoring and verification plan for emissions reductions and performance.",
+  "approach": "Prepared a monitoring and verification plan and supported participatory verification processes for the Kumasi cogeneration initiative.",
+  "outcomes": [
+    "M and V plan produced",
+    "Participatory verification process piloted",
+    "Baseline emission data established"
+  ]
+}

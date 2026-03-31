@@ -1,0 +1,106 @@
+{
+  "hero": {
+    "eyebrow": "Services",
+    "title": "Our Services. Services that build capacity.",
+    "intro": "From participatory planning to organizational development, we provide the tools and expertise communities need to thrive.",
+    "primaryCta": {
+      "label": "Explore Services",
+      "path": "/services"
+    },
+    "secondaryCta": {
+      "label": "Get in Touch",
+      "path": "/contact"
+    },
+    "image": {
+      "src": "/projects/project1-2.jpeg",
+      "alt": "Community engagement and implementation support"
+    }
+  },
+  "sectionIntro": {
+    "eyebrow": "Comprehensive Solutions",
+    "title": "Tailored services designed to empower communities and drive sustainable impact.",
+    "description": "We combine participatory practice, technical support, and implementation guidance so communities and institutions can move from planning to durable results."
+  },
+  "services": [
+    {
+      "title": "Co-Design Workshops and Participatory Planning",
+      "summary": "Facilitate inclusive planning processes that center community voices and local knowledge in development initiatives.",
+      "description": [
+        "Our co-design workshops bring together diverse stakeholders to collaboratively identify challenges, envision solutions, and develop actionable plans. We use proven participatory methods including community mapping, focus group discussions, stakeholder analysis, and theory of change development.",
+        "We ensure marginalized voices, including women, youth, and vulnerable groups, are meaningfully included in decision-making processes."
+      ],
+      "offerings": [
+        "Participatory Rural Appraisal (PRA) and Rapid Rural Appraisal (RRA)",
+        "Community resource mapping and asset identification",
+        "Stakeholder engagement and multi-stakeholder platform facilitation",
+        "Theory of change and logical framework development",
+        "Gender-responsive and socially inclusive planning methods",
+        "Conflict-sensitive program design"
+      ],
+      "cta": "Ready to co-create solutions with your community?"
+    },
+    {
+      "title": "Organizational Capacity Building",
+      "summary": "Strengthen organizations through training, systems development, and ongoing technical support for sustainable impact.",
+      "description": [
+        "We build the capacity of local organizations, community groups, and government agencies to effectively plan, implement, and manage development initiatives. Our approach combines classroom training with hands-on mentoring and systems development.",
+        "We have supported over 50 organizations across Ghana to strengthen their governance, financial management, program delivery, and monitoring and evaluation systems."
+      ],
+      "offerings": [
+        "Organizational assessment and development planning",
+        "Governance and leadership training",
+        "Financial management and resource mobilization",
+        "Monitoring, evaluation, and learning (MEL) systems",
+        "Strategic planning and business model development",
+        "Manual and toolkit development",
+        "Mentoring and ongoing technical assistance"
+      ],
+      "cta": "Strengthen your organization's capacity for impact."
+    },
+    {
+      "title": "Monitoring, Evaluation and Learning",
+      "summary": "Design and implement robust MEL systems that generate actionable insights and demonstrate impact.",
+      "description": [
+        "We help organizations measure what matters. Our MEL services range from designing comprehensive monitoring frameworks to conducting rigorous impact evaluations. We emphasize participatory approaches that build local capacity while generating credible evidence.",
+        "We support adaptive management by creating feedback loops that enable organizations to learn and improve throughout program implementation."
+      ],
+      "offerings": [
+        "MEL framework and indicator development",
+        "Baseline, midline, and endline surveys",
+        "Participatory impact assessment",
+        "Data collection tool design and testing",
+        "Qualitative and quantitative data analysis",
+        "Impact story documentation and knowledge harvesting",
+        "Learning events and reflection workshops",
+        "Donor reporting and communication"
+      ],
+      "cta": "Let's measure and amplify your impact."
+    }
+  ],
+  "bottomCta": {
+    "title": "Let's Work Together",
+    "description": "Ready to get started? Let's discuss how our services can support your community development goals and create lasting impact.",
+    "primary": {
+      "label": "Contact Us",
+      "path": "/contact"
+    },
+    "secondary": {
+      "label": "View Our Work",
+      "path": "/projects"
+    }
+  },
+  "stats": [
+    {
+      "value": "50+",
+      "label": "Communities Served"
+    },
+    {
+      "value": "15+",
+      "label": "Years Experience"
+    },
+    {
+      "value": "100%",
+      "label": "Community-Led"
+    }
+  ]
+}

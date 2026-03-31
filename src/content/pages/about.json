@@ -1,0 +1,84 @@
+{
+  "hero": {
+    "eyebrow": "About",
+    "title": "Building capacity. Empowering communities.",
+    "description": "Growth Solutions works at the intersection of strategy, systems, and local leadership to help communities shape sustainable futures.",
+    "image": {
+      "src": "/community-development-ghana-sustainable-projects.jpg",
+      "alt": "Community-led development activity in Ghana"
+    }
+  },
+  "about": {
+    "title": "Growth Solutions is a social enterprise offering services to provide sustenance in a meaningful way with the right intervention strategies for local communities.",
+    "description": "Growth Solutions is a social enterprise offering services to provide sustenance in a meaningful way with the right intervention strategies for local communities."
+  },
+  "ethos": {
+    "title": "Our Ethos",
+    "description": "We believe that every individual and community has solutions to their own challenges. We work for and with local communities to identify their resource potential in pursuing their own development. We support local communities through the creation of environmentally sound, socially inclined and economic empowering activities and social enterprises that can lead to solution-oriented and patriotic citizens."
+  },
+  "guidingPrinciples": {
+    "title": "Guiding Principles",
+    "items": [
+      "We work with an entrepreneurial spirit and mindset",
+      "We promote transparency and openness in local communities",
+      "We believe in participatory programme and project development",
+      "We facilitate multi-stakeholder platforms for policy influence",
+      "We support local enterprise development with practical tools",
+      "We harvest knowledge and apply it for resource mobilization"
+    ]
+  },
+  "approach": {
+    "title": "Our Approach",
+    "description": "Our approach combines participatory methods with technical expertise. We engage communities through co-design workshops, build capacity through hands-on training, and support implementation with ongoing technical assistance. We emphasize systems thinking, local ownership, and sustainable market linkages."
+  },
+  "team": {
+    "title": "Meet the Team",
+    "members": [
+      {
+        "name": "Sarah Naa Dedei Agbey",
+        "role": "Founder and Lead Advisor",
+        "bio": "Sarah is an experienced development practitioner with over 20 years' expertise in Planning, Organisational Development and Good Governance. She holds an M.Sc. in Regional Planning and Management from KNUST and University of Dortmund (Germany). She has worked with SNV-Ghana, rising to Deputy Country Director, and has extensive experience in climate change, renewable energy, environmental management, and capacity building. Sarah has implemented nationwide projects for UNDP, World Bank, Dutch Government and USAID, and served on Ghana's National Climate Change Committee.",
+        "image": {
+          "src": "/team/sarah-agbey.jpg",
+          "alt": "Portrait of Sarah Naa Dedei Agbey"
+        }
+      },
+      {
+        "name": "Maxwell Bentil",
+        "role": "Program Manager",
+        "bio": "Mr. Maxwell Bentil is a Development Planning and Management professional with over five years of experience in public sector planning, project coordination, and organizational development. He holds a Master's degree in Planning from KNUST and has worked with organizations including MATT-MARI Rescue Foundation, Cocoa Marketing Company, Kumasi Metropolitan Assembly, and the Ghana Statistical Service. Passionate about project management and development analysis, Maxwell is known for his adaptability and results-driven approach.",
+        "image": {
+          "src": "/team/maxwell-bentil.jpg",
+          "alt": "Portrait of Maxwell Bentil"
+        }
+      }
+    ]
+  },
+  "partnerLogos": [
+    {
+      "name": "SNV",
+      "src": "/partners/snv.jpg"
+    },
+    {
+      "name": "UNDP",
+      "src": "/partners/undp.jpg"
+    },
+    {
+      "name": "World Bank",
+      "src": "/partners/worldbank.jpg"
+    },
+    {
+      "name": "USAID",
+      "src": "/partners/usaid.jpg"
+    }
+  ],
+  "partnersCta": {
+    "eyebrow": "Trusted Partners",
+    "title": "Let us work together",
+    "description": "Ready to create meaningful change in your community? Get in touch with us.",
+    "primary": {
+      "label": "Contact Us",
+      "path": "/contact"
+    }
+  }
+}

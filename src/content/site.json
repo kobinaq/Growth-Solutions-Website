@@ -1,0 +1,49 @@
+{
+  "brand": {
+    "name": "Growth Solutions",
+    "label": "Community-Led"
+  },
+  "navigation": [
+    {
+      "label": "Home",
+      "path": "/"
+    },
+    {
+      "label": "About",
+      "path": "/about"
+    },
+    {
+      "label": "Projects",
+      "path": "/projects"
+    },
+    {
+      "label": "Services",
+      "path": "/services"
+    },
+    {
+      "label": "Contact",
+      "path": "/contact"
+    }
+  ],
+  "footer": {
+    "copyright": "© 2024 All rights reserved.",
+    "links": [
+      {
+        "label": "LinkedIn",
+        "href": "#"
+      },
+      {
+        "label": "Dribbble",
+        "href": "#"
+      },
+      {
+        "label": "Instagram",
+        "href": "#"
+      },
+      {
+        "label": "Contact",
+        "path": "/contact"
+      }
+    ]
+  }
+}

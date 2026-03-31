@@ -1,0 +1,146 @@
+{
+  "hero": {
+    "eyebrow": "Growth Solutions",
+    "title": "Community-led solutions for sustainable development.",
+    "description": [
+      "Collaborate with communities and agencies to create impactful results.",
+      "We believe in sustainable development through community-led initiatives and strategic partnerships."
+    ],
+    "primaryCta": {
+      "label": "Request a Consultation",
+      "path": "/services"
+    },
+    "secondaryCta": {
+      "label": "Contact Us",
+      "path": "/contact"
+    },
+    "image": {
+      "src": "/hero-bg.png",
+      "alt": "Community-led development work in Ghana"
+    }
+  },
+  "process": {
+    "title": "How we work with communities and partners.",
+    "steps": [
+      {
+        "title": "Discover",
+        "description": "We engage communities to understand their context, resources, and aspirations through participatory methods."
+      },
+      {
+        "title": "Co-Design",
+        "description": "Together we develop practical solutions that leverage local knowledge and comparative advantages."
+      },
+      {
+        "title": "Implement",
+        "description": "We support communities to execute initiatives with capacity building, technical assistance, and resource mobilization."
+      },
+      {
+        "title": "Evaluate and Scale",
+        "description": "We measure impact, harvest learnings, and identify pathways to scale successful interventions."
+      }
+    ]
+  },
+  "partners": {
+    "title": "Trusted by partners supporting inclusive and sustainable development.",
+    "logos": [
+      {
+        "name": "SNV",
+        "src": "/partners/snv.jpg"
+      },
+      {
+        "name": "UNDP",
+        "src": "/partners/undp.jpg"
+      },
+      {
+        "name": "World Bank",
+        "src": "/partners/worldbank.jpg"
+      },
+      {
+        "name": "USAID",
+        "src": "/partners/usaid.jpg"
+      },
+      {
+        "name": "DFID",
+        "src": "/partners/dfid.jpg"
+      },
+      {
+        "name": "Netherlands",
+        "src": "/partners/netherlands.jpg"
+      }
+    ]
+  },
+  "focusAreas": {
+    "title": "Dedicated to addressing the most pressing challenges through innovative and local solutions.",
+    "intro": "Our focus areas reflect the systems communities must strengthen to build sustainable futures.",
+    "items": [
+      {
+        "title": "Organizational Development",
+        "description": "Strengthening the capacity, leadership, and systems of community organizations to improve effectiveness, accountability, and long-term sustainability."
+      },
+      {
+        "title": "Energy and Green Transition",
+        "description": "Advancing access to clean, affordable, and renewable energy solutions while supporting communities to adapt to a low-carbon future."
+      },
+      {
+        "title": "Governance",
+        "description": "Promoting transparent, participatory, and inclusive governance structures that empower communities to make informed decisions and manage local resources responsibly."
+      },
+      {
+        "title": "Gender and Social Inclusion",
+        "description": "Mainstreaming gender equity and social inclusion across all programs to ensure equal opportunities, representation, and outcomes for marginalized groups."
+      },
+      {
+        "title": "Environment",
+        "description": "Supporting sustainable management of natural resources, biodiversity conservation, and climate resilience through community-led environmental stewardship."
+      }
+    ]
+  },
+  "featuredProjects": {
+    "title": "Selected work rooted in local realities.",
+    "description": "A few examples of how participatory planning, systems support, and local ownership show up in practice.",
+    "items": [
+      {
+        "slug": "water-sanitation-social-enterprise",
+        "label": "Community water and sanitation social enterprise",
+        "image": {
+          "src": "/projects/ada-water-1.jpg",
+          "alt": "Community members gathered around a new water point"
+        }
+      },
+      {
+        "slug": "ghana-school-feeding-assessment",
+        "label": "Nationwide school feeding programme assessment",
+        "image": {
+          "src": "/projects/ghana-school-feeding-assessment-1.jpg",
+          "alt": "School feeding programme field activity"
+        }
+      }
+    ]
+  },
+  "impactStats": [
+    {
+      "value": "50+",
+      "label": "Communities Served"
+    },
+    {
+      "value": "15+",
+      "label": "Years Experience"
+    },
+    {
+      "value": "100%",
+      "label": "Community-Led"
+    }
+  ],
+  "cta": {
+    "title": "Tell me about your next project",
+    "description": "Bring your challenge, opportunity, or idea and we will explore the right support together.",
+    "primary": {
+      "label": "Start Here",
+      "path": "/contact"
+    },
+    "secondary": {
+      "label": "View Projects",
+      "path": "/projects"
+    }
+  }
+}

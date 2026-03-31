@@ -1,0 +1,62 @@
+{
+  "hero": {
+    "eyebrow": "Projects",
+    "title": "Real impact. Real communities.",
+    "intro": "Explore our work across Ghana - from water systems to renewable energy, from livelihood programs to governance strengthening.",
+    "image": {
+      "src": "/projects/agroforestry-1.jpg",
+      "alt": "Community members participating in a field-based project"
+    }
+  },
+  "categories": [
+    {
+      "title": "Organizational Development",
+      "projectSlugs": [
+        "sfmp-partner-od"
+      ]
+    },
+    {
+      "title": "Energy and Green Transition",
+      "projectSlugs": [
+        "green-employment-enterprise",
+        "clean-cooking-strategy",
+        "clean-cookstoves-curriculum-integration",
+        "ghana-alliance-clean-cookstoves-setup",
+        "kumasi-cogeneration-mvp"
+      ]
+    },
+    {
+      "title": "Governance",
+      "projectSlugs": [
+        "ghana-school-feeding-assessment",
+        "nafag-governance-strengthening",
+        "social-public-expenditure-financial-accountability-spefa",
+        "local-government-development-programme-logodep",
+        "gsfp-community-monitoring-cso"
+      ]
+    },
+    {
+      "title": "Gender and Social Inclusion",
+      "projectSlugs": [
+        "sistars-women-stem-leadership",
+        "anti-child-labour-messaging"
+      ]
+    },
+    {
+      "title": "Environment",
+      "projectSlugs": [
+        "water-sanitation-social-enterprise",
+        "green-economy-strategy-handbook",
+        "national-climate-change-adaptation-strategy"
+      ]
+    }
+  ],
+  "cta": {
+    "title": "Start your project",
+    "description": "Every community has unique strengths. Let's discover yours together.",
+    "primary": {
+      "label": "Work With Us",
+      "path": "/contact"
+    }
+  }
+}
