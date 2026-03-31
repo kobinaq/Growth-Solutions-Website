@@ -19,6 +19,14 @@
       "alt": "Community-led development work in Ghana"
     }
   },
+  "manifesto": {
+    "eyebrow": "Why We Exist",
+    "title": "Development lasts when communities shape the decisions, own the process, and build on what already exists.",
+    "paragraphs": [
+      "Growth Solutions works with communities, agencies, and institutions to design interventions that are practical, locally grounded, and capable of lasting beyond the life of a project.",
+      "We believe sustainable development comes from combining participatory methods, technical depth, and strategic partnerships in ways that strengthen local systems instead of bypassing them."
+    ]
+  },
   "process": {
     "title": "How we work with communities and partners.",
     "steps": [
@@ -131,6 +139,11 @@
       "label": "Community-Led"
     }
   ],
+  "impactStatement": {
+    "eyebrow": "Impact",
+    "title": "Measured in stronger organisations, more capable systems, and communities positioned to lead their own progress.",
+    "description": "Our work supports implementation on the ground while building the planning, governance, and learning structures that make progress durable."
+  },
   "cta": {
     "title": "Tell me about your next project",
     "description": "Bring your challenge, opportunity, or idea and we will explore the right support together.",

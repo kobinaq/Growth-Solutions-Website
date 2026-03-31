@@ -41,6 +41,11 @@ export type HomeContent = {
     secondaryCta?: CtaLink;
     image: ImageAsset;
   };
+  manifesto: {
+    eyebrow: string;
+    title: string;
+    paragraphs: string[];
+  };
   process: {
     title: string;
     steps: Array<{
@@ -68,6 +73,11 @@ export type HomeContent = {
       label: string;
       image: ImageAsset;
     }>;
+  };
+  impactStatement: {
+    eyebrow: string;
+    title: string;
+    description: string;
   };
   impactStats: Stat[];
   cta: SharedCta;

@@ -60,24 +60,26 @@ export function SiteHeader({
   onToggleMenu: () => void;
 }) {
   return (
-    <header className="fixed inset-x-0 top-0 z-50 px-4 py-4 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-7xl rounded-[1.75rem] border border-white/60 bg-[rgba(250,246,238,0.84)] px-5 py-4 shadow-[0_24px_80px_rgba(29,40,31,0.12)] backdrop-blur">
-        <div className="flex items-center justify-between gap-4">
+    <header className="fixed inset-x-0 top-0 z-50 px-4 py-5 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-[92rem] border-b border-foreground/10 bg-[rgba(248,244,236,0.76)] px-0 pb-4 pt-1 backdrop-blur">
+        <div className="flex items-center justify-between gap-4 px-1">
           <button
             type="button"
             onClick={() => onNavigate("/")}
             className="flex items-center gap-3 text-left"
           >
-            <img src="/logo.svg" alt="Growth Solutions logo" className="h-12 w-12 rounded-full object-cover ring-1 ring-primary/10" />
+            <img src="/logo.svg" alt="Growth Solutions logo" className="h-12 w-12 object-cover" />
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.28em] text-primary/65">
                 {brand.label}
               </p>
-              <p className="text-lg font-semibold text-foreground">{brand.name}</p>
+              <p className="font-editorial text-[1.85rem] leading-none text-foreground">
+                {brand.name}
+              </p>
             </div>
           </button>
 
-          <nav className="hidden items-center gap-2 lg:flex">
+          <nav className="hidden items-center gap-1 lg:flex">
             {navLinks.map((link) => (
               <HeaderLink
                 key={link.label}
@@ -90,17 +92,17 @@ export function SiteHeader({
 
           <div className="hidden lg:block">
             <Button
-              onClick={() => onNavigate("/services")}
-              className="rounded-full bg-primary px-6 text-primary-foreground shadow-lg shadow-primary/25 hover:bg-primary/90"
+              onClick={() => onNavigate("/contact")}
+              className="rounded-none border-b-2 border-primary bg-transparent px-0 py-0 text-sm font-semibold uppercase tracking-[0.18em] text-primary shadow-none hover:bg-transparent hover:text-primary/80"
             >
-              Request a Consultation
+              Contact
             </Button>
           </div>
 
           <button
             type="button"
             onClick={onToggleMenu}
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-border bg-white/90 text-foreground lg:hidden"
+            className="inline-flex h-11 w-11 items-center justify-center border border-foreground/10 bg-white/70 text-foreground lg:hidden"
             aria-label="Toggle menu"
           >
             {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -108,7 +110,7 @@ export function SiteHeader({
         </div>
 
         {isMenuOpen ? (
-          <div className="mt-4 space-y-2 border-t border-border/70 pt-4 lg:hidden">
+          <div className="mt-4 space-y-2 border-t border-foreground/10 px-1 pt-4 lg:hidden">
             {navLinks.map((link) => (
               <HeaderLink
                 key={link.label}
@@ -119,10 +121,10 @@ export function SiteHeader({
               />
             ))}
             <Button
-              onClick={() => onNavigate("/services")}
-              className="mt-3 w-full rounded-full bg-primary text-primary-foreground hover:bg-primary/90"
+              onClick={() => onNavigate("/contact")}
+              className="mt-3 w-full rounded-none bg-primary text-primary-foreground hover:bg-primary/90"
             >
-              Request a Consultation
+              Contact
             </Button>
           </div>
         ) : null}
@@ -149,11 +151,11 @@ function HeaderLink({
       href={link.path ?? link.href ?? "#"}
       onClick={(event) => handleLinkClick(event, link, onNavigate)}
       className={[
-        "rounded-full px-4 py-2 text-sm font-medium transition",
+        "px-4 py-2 text-sm font-semibold uppercase tracking-[0.14em] transition",
         active
-          ? "bg-primary text-primary-foreground shadow-lg shadow-primary/20"
-          : "text-foreground/72 hover:bg-white hover:text-foreground",
-        stacked ? "block w-full text-center" : "",
+          ? "text-primary"
+          : "text-foreground/68 hover:text-foreground",
+        stacked ? "block w-full border-b border-foreground/10 text-center" : "",
       ].join(" ")}
     >
       {link.label}
@@ -169,18 +171,41 @@ export function SiteFooter({
   navigate: (path: string) => void;
 }) {
   return (
-    <footer className="px-4 pb-8 sm:px-6 lg:px-8">
-      <div className="mx-auto flex max-w-7xl flex-col gap-5 rounded-[2rem] border border-border/60 bg-[rgba(250,246,238,0.88)] px-7 py-6 shadow-[0_20px_70px_rgba(35,42,31,0.1)] sm:flex-row sm:items-center sm:justify-between">
-        <div className="flex items-center gap-3">
-          <img src="/logo.svg" alt="Growth Solutions logo" className="h-10 w-10 rounded-full object-cover ring-1 ring-primary/10" />
-          <div>
-            <p className="text-sm font-semibold text-foreground">Growth Solutions</p>
-            <p className="text-xs uppercase tracking-[0.2em] text-primary/60">
-              Community-led development
-            </p>
+    <footer className="mt-24 border-t border-foreground/10 bg-[#efe7d8] px-4 py-14 sm:px-6 lg:px-8">
+      <div className="mx-auto grid max-w-[92rem] gap-10 lg:grid-cols-[1.2fr_0.8fr_0.7fr]">
+        <div className="max-w-xl">
+          <p className="text-sm uppercase tracking-[0.22em] text-primary/60">
+            Community-led development
+          </p>
+          <h2 className="font-editorial mt-4 text-4xl leading-tight text-foreground sm:text-5xl">
+            Growth Solutions
+          </h2>
+          <p className="mt-5 text-base leading-8 text-foreground/72">
+            Strategy, systems support, and implementation guidance rooted in local ownership, inclusive participation, and sustainable impact.
+          </p>
+        </div>
+
+        <div>
+          <p className="text-sm uppercase tracking-[0.2em] text-primary/60">Navigation</p>
+          <div className="mt-5 grid gap-3">
+            {footer.links
+              .filter((link) => link.path)
+              .map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href ?? link.path ?? "#"}
+                  onClick={(event) => handleLinkClick(event, link, navigate)}
+                  className="text-base text-foreground/74 transition hover:text-foreground"
+                >
+                  {link.label}
+                </a>
+              ))}
           </div>
         </div>
-        <div className="flex flex-wrap items-center gap-2">
+
+        <div>
+          <p className="text-sm uppercase tracking-[0.2em] text-primary/60">Connect</p>
+          <div className="mt-5 grid gap-3">
           {footer.links.map((link) => (
             <a
               key={link.label}
@@ -188,13 +213,16 @@ export function SiteFooter({
               onClick={(event) => handleLinkClick(event, link, navigate)}
               target={isExternalLink(link.href) ? "_blank" : undefined}
               rel={isExternalLink(link.href) ? "noreferrer" : undefined}
-              className="rounded-full px-4 py-2 text-sm font-medium text-foreground/72 transition hover:bg-secondary hover:text-foreground"
+              className="text-base text-foreground/74 transition hover:text-foreground"
             >
               {link.label}
             </a>
           ))}
+          </div>
         </div>
-        <p className="text-sm text-foreground/70">{footer.copyright}</p>
+      </div>
+      <div className="mx-auto mt-12 max-w-[92rem] border-t border-foreground/10 pt-6 text-sm text-foreground/64">
+        {footer.copyright}
       </div>
     </footer>
   );
@@ -300,9 +328,9 @@ export function PageIntro({
       initial={{ opacity: 0, y: 24 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.55, ease: "easeOut" }}
-      className="overflow-hidden rounded-[2.35rem] border border-border/50 bg-[rgba(250,246,238,0.88)] px-8 py-10 shadow-[0_24px_80px_rgba(35,42,31,0.12)] sm:px-10"
+      className="px-4 py-8 sm:px-6 lg:px-8"
     >
-      <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+      <div className="mx-auto grid max-w-[92rem] gap-8 border-b border-foreground/10 pb-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
         <div>
           <p className="text-sm font-semibold uppercase tracking-[0.22em] text-primary/62">
             {eyebrow}
@@ -315,7 +343,7 @@ export function PageIntro({
           </p>
         </div>
         {image ? (
-          <div className="overflow-hidden rounded-[2rem] border border-white/50 bg-white/70 shadow-[0_18px_60px_rgba(35,42,31,0.12)]">
+          <div className="overflow-hidden rounded-[2rem] shadow-[0_18px_60px_rgba(35,42,31,0.12)]">
             <img src={image.src} alt={image.alt} className="h-[19rem] w-full object-cover" />
           </div>
         ) : null}
@@ -344,7 +372,7 @@ export function ContentCard({
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.45, ease: "easeOut" }}
       className={[
-        "rounded-[2rem] border border-border/50 bg-[rgba(252,249,242,0.9)] p-7 shadow-[0_20px_70px_rgba(35,42,31,0.1)] sm:p-8",
+        "border-t border-foreground/10 pt-7 sm:pt-8",
         className,
       ].join(" ")}
     >

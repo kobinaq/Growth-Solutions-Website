@@ -41,6 +41,10 @@ body {
   background-attachment: fixed;
 }
 
+.font-editorial {
+  font-family: "Cormorant Garamond", Georgia, serif;
+}
+
 #root {
   min-height: 100vh;
 }

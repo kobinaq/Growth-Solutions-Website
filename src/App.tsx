@@ -97,20 +97,18 @@ function App() {
         onToggleMenu={() => setMobileMenuOpen((open) => !open)}
       />
 
-      <main className="px-4 pb-16 pt-28 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          {activePage === "home" && <HomePage navigate={navigate} />}
-          {activePage === "about" && <AboutPage navigate={navigate} />}
-          {activePage === "services" && <ServicesPage navigate={navigate} />}
-          {activePage === "projects" && (
-            <ProjectsPage navigate={navigate} projects={projectMap} />
-          )}
-          {activePage === "contact" && <ContactPage navigate={navigate} />}
-          {activePage === "project-detail" && activeProject && (
-            <ProjectDetailPage project={activeProject} navigate={navigate} />
-          )}
-          {activePage === "not-found" && <NotFoundPage navigate={navigate} />}
-        </div>
+      <main className="pb-16 pt-28">
+        {activePage === "home" && <HomePage navigate={navigate} />}
+        {activePage === "about" && <AboutPage navigate={navigate} />}
+        {activePage === "services" && <ServicesPage navigate={navigate} />}
+        {activePage === "projects" && (
+          <ProjectsPage navigate={navigate} projects={projectMap} />
+        )}
+        {activePage === "contact" && <ContactPage navigate={navigate} />}
+        {activePage === "project-detail" && activeProject && (
+          <ProjectDetailPage project={activeProject} navigate={navigate} />
+        )}
+        {activePage === "not-found" && <NotFoundPage navigate={navigate} />}
       </main>
 
       <SiteFooter footer={siteContent.footer} navigate={navigate} />
