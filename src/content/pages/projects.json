@@ -5,49 +5,183 @@
     "intro": "Explore our work across Ghana - from water systems to renewable energy, from livelihood programs to governance strengthening.",
     "image": {
       "src": "/projects/agroforestry-1.jpg",
-      "alt": "Community members participating in a field-based project"
+      "alt": "Projects"
     }
   },
   "categories": [
     {
-      "title": "Organizational Development",
-      "projectSlugs": [
-        "sfmp-partner-od"
+      "title": "Organisational Development",
+      "projects": [
+        {
+          "title": "Sustainable Fisheries Management Project (SFMP)",
+          "description": "Strengthened Nine (9) Civil Society Organizations in the Fishing Community capacity with Organisational Development solutions in the area of Governance, Financial Management, Human Resource Management Project Management, managing Partnership and External Relationships and leadership, Financial and Strategic Sustainable.",
+          "image": {
+            "src": "/projects/project1-1.jpeg",
+            "alt": "Sustainable Fisheries Management Project (SFMP)"
+          },
+          "stats": [
+            {
+              "value": "9",
+              "label": "Civil Society Organizations"
+            }
+          ]
+        },
+        {
+          "title": "Nationwide Assessment of the Ghana School Feeding Programme",
+          "description": "Conducted national assessment to inform reform and Social Accountability in GSFP.",
+          "image": {
+            "src": "/projects/ghana-school-feeding-assessment-1.jpg",
+            "alt": "Nationwide Assessment of the Ghana School Feeding Programme"
+          }
+        },
+        {
+          "title": "NAFAG Organizational Development Support.",
+          "description": "Supported NAFAG in developing key Organisational Development Document such as constitution updated Financial and Administrative Manual, Strategic plans and organization of national executive elections. The outcome was institutional reforms for fisheries governance in NAFAG",
+          "image": {
+            "src": "/projects/project1-2.jpeg",
+            "alt": "NAFAG Organizational Development Support."
+          }
+        },
+        {
+          "title": "Local Government Development Programme (LOGODEP)",
+          "description": "Provided technical setup and pilot support for local governance programme in Western Region.",
+          "image": {
+            "src": "/projects/project1-1.jpg",
+            "alt": "Local Government Development Programme (LOGODEP)"
+          }
+        },
+        {
+          "title": "Provide Technical support in the Preparation of a Medium-Term Development Plan based on the Ghana Poverty Reduction Strategy (GPRS).",
+          "image": {
+            "src": "/projects/project1-2.jpg",
+            "alt": "Provide Technical support in the Preparation of a Medium-Term Development Plan based on the Ghana Poverty Reduction Strategy (GPRS)."
+          }
+        }
       ]
     },
     {
       "title": "Energy and Green Transition",
-      "projectSlugs": [
-        "green-employment-enterprise",
-        "clean-cooking-strategy",
-        "clean-cookstoves-curriculum-integration",
-        "ghana-alliance-clean-cookstoves-setup",
-        "kumasi-cogeneration-mvp"
+      "projects": [
+        {
+          "title": "Contributed in setting up the Ghana Alliance for Clean Cooking and supporting in setting up strong Organisational Development systems.",
+          "image": {
+            "src": "/projects/solar-school-1.jpg",
+            "alt": "Contributed in setting up the Ghana Alliance for Clean Cooking and supporting in setting up strong Organisational Development systems."
+          }
+        },
+        {
+          "title": "Supported the establishment and coordination of other national clean cooking alliances in West Africa.",
+          "image": {
+            "src": "/projects/agroforestry-1.jpg",
+            "alt": "Supported the establishment and coordination of other national clean cooking alliances in West Africa."
+          }
+        },
+        {
+          "title": "Served as a Task Team member in developing Ghana’s national clean cooking framework and roadmap.",
+          "image": {
+            "src": "/projects/project1-1.jpeg",
+            "alt": "Served as a Task Team member in developing Ghana’s national clean cooking framework and roadmap."
+          }
+        },
+        {
+          "title": "Supported in Clean Cookstoves Education & Curriculum Integration.",
+          "description": "Introduced clean cooking content into school curricula and community programs.",
+          "image": {
+            "src": "/projects/solar-school-1.jpg",
+            "alt": "Supported in Clean Cookstoves Education & Curriculum Integration."
+          }
+        },
+        {
+          "title": "Developed and implemented monitoring systems for energy performance and emissions reduction.",
+          "image": {
+            "src": "/projects/project1-2.jpeg",
+            "alt": "Developed and implemented monitoring systems for energy performance and emissions reduction."
+          }
+        }
       ]
     },
     {
       "title": "Governance",
-      "projectSlugs": [
-        "ghana-school-feeding-assessment",
-        "nafag-governance-strengthening",
-        "social-public-expenditure-financial-accountability-spefa",
-        "local-government-development-programme-logodep",
-        "gsfp-community-monitoring-cso"
+      "projects": [
+        {
+          "title": "Developed and implemented Social Public Expenditure & Financial Accountability (SPEFA) in 46 Assemblies",
+          "description": "Enhanced citizen participation and CSO capacity in local government financial accountability.",
+          "image": {
+            "src": "/projects/project1-2.jpg",
+            "alt": "Developed and implemented Social Public Expenditure & Financial Accountability (SPEFA) in 46 Assemblies"
+          },
+          "stats": [
+            {
+              "value": "46",
+              "label": "Assemblies"
+            }
+          ]
+        },
+        {
+          "title": "Community Monitoring of Ghana School Feeding Programme (Civil Society)",
+          "description": "Led independent CSO monitoring initiative to improve transparency and accountability in GSFP.",
+          "image": {
+            "src": "/projects/ghana-school-feeding-assessment-2.jpg",
+            "alt": "Community Monitoring of Ghana School Feeding Programme (Civil Society)"
+          }
+        }
       ]
     },
     {
       "title": "Gender and Social Inclusion",
-      "projectSlugs": [
-        "sistars-women-stem-leadership",
-        "anti-child-labour-messaging"
+      "projects": [
+        {
+          "title": "Provided Organisational Development for Women in STEM Leadership (cross-listed) under the SISTARS Project",
+          "description": "Enhanced institutional inclusion and leadership development for women in STEM.",
+          "image": {
+            "src": "/projects/project1-1.jpg",
+            "alt": "Provided Organisational Development for Women in STEM Leadership (cross-listed) under the SISTARS Project"
+          }
+        },
+        {
+          "title": "Anti-Child Labour & Trafficking Community Messaging",
+          "description": "Developed district-specific awareness toolkits to combat child labour and trafficking.",
+          "image": {
+            "src": "/projects/project1-2.jpeg",
+            "alt": "Anti-Child Labour & Trafficking Community Messaging"
+          }
+        }
       ]
     },
     {
       "title": "Environment",
-      "projectSlugs": [
-        "water-sanitation-social-enterprise",
-        "green-economy-strategy-handbook",
-        "national-climate-change-adaptation-strategy"
+      "projects": [
+        {
+          "title": "Set up Water & Sanitation Social Enterprise.",
+          "description": "Established local social enterprise for community-managed WASH services.",
+          "image": {
+            "src": "/projects/ada-water-1.jpg",
+            "alt": "Set up Water & Sanitation Social Enterprise."
+          }
+        },
+        {
+          "title": "Supported in developing a National Green Economy Manual & Handbook",
+          "image": {
+            "src": "/projects/agroforestry-1.jpg",
+            "alt": "Supported in developing a National Green Economy Manual & Handbook"
+          }
+        },
+        {
+          "title": "Contributed to a National Climate Change Adaptation Strategy.",
+          "description": "Contributed to Ghana’s adaptation framework and district-level integration.",
+          "image": {
+            "src": "/projects/project1-1.jpeg",
+            "alt": "Contributed to a National Climate Change Adaptation Strategy."
+          }
+        },
+        {
+          "title": "Supported in Boosting Green Employment and Enterprise Opportunities (GrEEn)",
+          "description": "Promoted green jobs and MSME growth in energy and environmental sectors.",
+          "image": {
+            "src": "/projects/ada-water-2.jpg",
+            "alt": "Supported in Boosting Green Employment and Enterprise Opportunities (GrEEn)"
+          }
+        }
       ]
     }
   ],

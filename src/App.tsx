@@ -85,9 +85,6 @@ function App() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <div className="fixed inset-x-0 top-0 -z-10 h-[38rem] bg-[radial-gradient(circle_at_top,rgba(31,122,86,0.22),transparent_58%),radial-gradient(circle_at_right,rgba(219,170,89,0.24),transparent_38%)]" />
-      <div className="fixed inset-0 -z-20 bg-[linear-gradient(180deg,rgba(249,246,238,1),rgba(244,239,227,0.94)_42%,rgba(248,247,243,1))]" />
-
       <SiteHeader
         brand={siteContent.brand}
         currentPath={pathname}
@@ -97,13 +94,11 @@ function App() {
         onToggleMenu={() => setMobileMenuOpen((open) => !open)}
       />
 
-      <main className="pb-16 pt-28">
+      <main className="pb-0 pt-[4.625rem]">
         {activePage === "home" && <HomePage navigate={navigate} />}
         {activePage === "about" && <AboutPage navigate={navigate} />}
         {activePage === "services" && <ServicesPage navigate={navigate} />}
-        {activePage === "projects" && (
-          <ProjectsPage navigate={navigate} projects={projectMap} />
-        )}
+        {activePage === "projects" && <ProjectsPage navigate={navigate} />}
         {activePage === "contact" && <ContactPage navigate={navigate} />}
         {activePage === "project-detail" && activeProject && (
           <ProjectDetailPage project={activeProject} navigate={navigate} />

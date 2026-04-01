@@ -3,30 +3,49 @@
 @tailwind utilities;
 
 :root {
-  --background: 46 37% 96%;
-  --foreground: 151 19% 14%;
-  --card: 0 0% 100%;
-  --card-foreground: 151 19% 14%;
-  --popover: 0 0% 100%;
-  --popover-foreground: 151 19% 14%;
-  --primary: 155 60% 30%;
-  --primary-foreground: 45 38% 97%;
-  --secondary: 47 35% 90%;
-  --secondary-foreground: 151 19% 14%;
-  --muted: 45 24% 92%;
-  --muted-foreground: 150 10% 39%;
-  --accent: 210 40% 96.1%;
-  --accent-foreground: 151 19% 14%;
-  --destructive: 0 84.2% 60.2%;
-  --destructive-foreground: 210 40% 98%;
-  --border: 45 18% 84%;
-  --input: 45 18% 84%;
-  --ring: 155 60% 30%;
-  --radius: 1rem;
+  --size: 1600;
+  --color-black: #0b1012;
+  --color-white: #fff;
+  --color-cream: #f3f0ec;
+  --color-taupe: #d4cec6;
+  --color-grey: #212325;
+  --ease-in-out-quart: cubic-bezier(.77, 0, .175, 1);
+  --ease-in-out-cubic: cubic-bezier(.645, .045, .355, 1);
+  --ease-in-out-quad: cubic-bezier(.455, .03, .515, .955);
+  --ease-out-quart: cubic-bezier(.165, .84, .44, 1);
+  --ease-out-cubic: cubic-bezier(.215, .61, .355, 1);
+  --ease-out-quad: cubic-bezier(.25, .46, .45, .94);
+  --ease-none: cubic-bezier(.25, .25, .75, .75);
+  --font-s: calc((100vw / var(--size)) * 10);
+  --font-f-aeonik-mono: "Aeonik Mono";
+  --font-f-aeonik-pro: "Aeonik Pro";
+  --un-bg-opacity: 1;
+  --un-text-opacity: 1;
+  --background: 200 24% 6%;
+  --foreground: 0 0% 100%;
+  --card: 200 11% 14%;
+  --card-foreground: 0 0% 100%;
+  --popover: 200 24% 6%;
+  --popover-foreground: 0 0% 100%;
+  --primary: 0 0% 100%;
+  --primary-foreground: 200 24% 6%;
+  --secondary: 34 23% 94%;
+  --secondary-foreground: 200 24% 6%;
+  --muted: 210 6% 18%;
+  --muted-foreground: 0 0% 100%;
+  --accent: 34 23% 94%;
+  --accent-foreground: 200 24% 6%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 210 8% 24%;
+  --input: 210 8% 24%;
+  --ring: 34 23% 94%;
+  --radius: 16px;
 }
 
 * {
   @apply border-border;
+  box-sizing: border-box;
 }
 
 html {
@@ -34,19 +53,28 @@ html {
 }
 
 body {
-  @apply bg-background text-foreground;
   margin: 0;
   min-height: 100vh;
-  font-family: "Manrope", "Segoe UI", sans-serif;
-  background-attachment: fixed;
-}
-
-.font-editorial {
-  font-family: "Cormorant Garamond", Georgia, serif;
+  background: var(--color-black);
+  color: var(--color-white);
+  font-family: var(--font-f-aeonik-pro), "Montserrat", "Segoe UI", Arial, sans-serif;
+  text-rendering: optimizeLegibility;
 }
 
 #root {
   min-height: 100vh;
+}
+
+a,
+button,
+input,
+select,
+textarea {
+  transition:
+    color 0.5s,
+    opacity 0.3s ease-out,
+    background-color 0.5s,
+    border-color 0.5s;
 }
 
 a {
@@ -54,11 +82,96 @@ a {
   text-decoration: none;
 }
 
-button {
+button,
+input,
+select,
+textarea {
   font: inherit;
 }
 
+img {
+  display: block;
+}
+
 ::selection {
-  background: hsl(var(--primary) / 0.18);
-  color: hsl(var(--foreground));
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--color-white);
+}
+
+.font-pro {
+  font-family: var(--font-f-aeonik-pro), "Montserrat", "Segoe UI", Arial, sans-serif;
+}
+
+.font-mono-aeonik {
+  font-family: var(--font-f-aeonik-mono), "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+}
+
+.site-label {
+  font-family: var(--font-f-aeonik-mono), "SFMono-Regular", Consolas, monospace;
+  font-size: 11.2px;
+  font-weight: 600;
+  letter-spacing: 1.12px;
+  line-height: 14.56px;
+  text-transform: uppercase;
+}
+
+.site-title-xl {
+  font-size: clamp(3rem, 5vw, 5.1rem);
+  font-weight: 400;
+  letter-spacing: -1.536px;
+  line-height: 0.98;
+}
+
+.site-title-lg {
+  font-size: clamp(2.25rem, 3.8vw, 3.2rem);
+  font-weight: 400;
+  letter-spacing: -0.96px;
+  line-height: 1;
+}
+
+.site-title-md {
+  font-size: clamp(1.8rem, 3vw, 2rem);
+  font-weight: 400;
+  letter-spacing: -0.64px;
+  line-height: 1;
+}
+
+.site-copy-lg {
+  font-size: 19.2px;
+  font-weight: 400;
+  line-height: 23.04px;
+}
+
+.site-copy-md {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.site-copy-sm {
+  font-size: 14.4px;
+  font-weight: 400;
+  line-height: 18.72px;
+}
+
+.site-shell {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+@media (min-width: 768px) {
+  .site-shell {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .site-shell {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
 }

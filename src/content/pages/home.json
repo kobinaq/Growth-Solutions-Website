@@ -1,6 +1,6 @@
 {
   "hero": {
-    "eyebrow": "Growth Solutions",
+    "eyebrow": "",
     "title": "Community-led solutions for sustainable development.",
     "description": [
       "Collaborate with communities and agencies to create impactful results.",
@@ -15,7 +15,7 @@
       "path": "/contact"
     },
     "image": {
-      "src": "/hero-bg.png",
+      "src": "/hero-bg.jpg",
       "alt": "Community-led development work in Ghana"
     }
   },
@@ -108,19 +108,42 @@
     "description": "A few examples of how participatory planning, systems support, and local ownership show up in practice.",
     "items": [
       {
-        "slug": "water-sanitation-social-enterprise",
-        "label": "Community water and sanitation social enterprise",
+        "category": "Organisational Development",
+        "title": "Sustainable Fisheries Management Project (SFMP)",
+        "description": "Strengthened Nine (9) Civil Society Organizations in the Fishing Community capacity with Organisational Development solutions in the area of Governance, Financial Management, Human Resource Management Project Management, managing Partnership and External Relationships and leadership, Financial and Strategic Sustainable.",
+        "stats": [
+          {
+            "value": "9",
+            "label": "Civil Society Organizations"
+          }
+        ],
         "image": {
-          "src": "/projects/ada-water-1.jpg",
-          "alt": "Community members gathered around a new water point"
+          "src": "/projects/project1-1.jpeg",
+          "alt": "Sustainable Fisheries Management Project (SFMP)"
         }
       },
       {
-        "slug": "ghana-school-feeding-assessment",
-        "label": "Nationwide school feeding programme assessment",
+        "category": "Governance",
+        "title": "Developed and implemented Social Public Expenditure & Financial Accountability (SPEFA) in 46 Assemblies",
+        "description": "Enhanced citizen participation and CSO capacity in local government financial accountability.",
+        "stats": [
+          {
+            "value": "46",
+            "label": "Assemblies"
+          }
+        ],
         "image": {
-          "src": "/projects/ghana-school-feeding-assessment-1.jpg",
-          "alt": "School feeding programme field activity"
+          "src": "/projects/project1-2.jpg",
+          "alt": "Developed and implemented Social Public Expenditure & Financial Accountability (SPEFA) in 46 Assemblies"
+        }
+      },
+      {
+        "category": "Environment",
+        "title": "Set up Water & Sanitation Social Enterprise.",
+        "description": "Established local social enterprise for community-managed WASH services.",
+        "image": {
+          "src": "/projects/ada-water-1.jpg",
+          "alt": "Set up Water & Sanitation Social Enterprise."
         }
       }
     ]

@@ -68,11 +68,7 @@ export type HomeContent = {
   featuredProjects: {
     title: string;
     description: string;
-    items: Array<{
-      slug: string;
-      label: string;
-      image: ImageAsset;
-    }>;
+    items: ProjectFeature[];
   };
   impactStatement: {
     eyebrow: string;
@@ -81,6 +77,18 @@ export type HomeContent = {
   };
   impactStats: Stat[];
   cta: SharedCta;
+};
+
+export type ProjectListItem = {
+  title: string;
+  description?: string;
+  image: ImageAsset;
+  slug?: string;
+  stats?: Stat[];
+};
+
+export type ProjectFeature = ProjectListItem & {
+  category: string;
 };
 
 export type AboutContent = {
@@ -157,7 +165,7 @@ export type ProjectsContent = {
   };
   categories: Array<{
     title: string;
-    projectSlugs: string[];
+    projects: ProjectListItem[];
   }>;
   cta: SharedCta;
 };

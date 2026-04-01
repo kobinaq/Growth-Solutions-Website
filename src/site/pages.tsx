@@ -1,704 +1,669 @@
-import { ChevronRight, Mail, MessageCircle } from "lucide-react";
-import { useState, type FormEvent } from "react";
+import { ArrowRight, ChevronRight, Mail, MessageCircle } from "lucide-react";
+import { useState, type FormEvent, type ReactNode } from "react";
 
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 import {
   aboutContent,
   contactContent,
   homeContent,
-  projectMap,
   projectsContent,
   servicesContent,
 } from "@/site/content";
-import type { ProjectDetail } from "@/site/types";
-import {
-  ImageFrame,
-  MotionCard,
-  PageIntro,
-} from "@/site/ui";
-import { Button } from "@/components/ui/button";
+import type { CtaLink, ImageAsset, ProjectDetail, ProjectListItem } from "@/site/types";
+import { FadeIn, ImagePanel, PageBand, SectionLabel, isExternalLink } from "@/site/ui";
 
-const getProjectImage = (project: ProjectDetail) =>
-  project.images?.[0] ?? {
-    src: "/projects/agroforestry-1.jpg",
-    alt: `${project.title} project image`,
-  };
-
-export function HomePage({ navigate }: { navigate: (path: string) => void }) {
-  const featuredProjects = homeContent.featuredProjects.items.map((item) => ({
-    item,
-    project: projectMap.get(`/projects/${item.slug}`),
-  }));
+const getProjectImage = (project: ProjectDetail | ProjectListItem): ImageAsset => {
+  if ("image" in project) {
+    return project.image;
+  }
 
   return (
-    <div className="space-y-20 sm:space-y-24">
-      <section className="relative min-h-[88vh] overflow-hidden bg-[#1a2c22] text-white shadow-[0_28px_120px_rgba(22,34,27,0.3)]">
-        <img
-          src={homeContent.hero.image.src}
-          alt={homeContent.hero.image.alt}
-          className="absolute inset-0 h-full w-full object-cover opacity-45"
-        />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(20,31,24,0.92),rgba(20,31,24,0.58),rgba(20,31,24,0.28))]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(210,173,88,0.22),transparent_30%)]" />
+    project.images?.[0] ?? {
+      src: "/projects/agroforestry-1.jpg",
+      alt: `${project.title} project image`,
+    }
+  );
+};
 
-        <div className="relative mx-auto grid min-h-[88vh] max-w-[92rem] gap-12 px-4 py-16 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8 lg:py-20">
-          <div className="flex flex-col justify-end">
-            <p className="text-sm font-semibold uppercase tracking-[0.28em] text-white/72">
-              {homeContent.hero.eyebrow}
-            </p>
-            <h1 className="font-editorial mt-6 max-w-4xl text-6xl leading-[0.92] sm:text-7xl lg:text-[6.4rem]">
-              {homeContent.hero.title}
-            </h1>
-            <div className="mt-8 max-w-2xl space-y-4 text-base leading-8 text-white/82 sm:text-lg">
-              {homeContent.hero.description.map((paragraph) => (
-                <p key={paragraph}>{paragraph}</p>
-              ))}
-            </div>
-            <div className="mt-10 flex flex-wrap gap-3">
-              <Button
-                onClick={() => navigate(homeContent.hero.primaryCta.path ?? "/services")}
-                className="rounded-full bg-[#f7f0df] px-7 text-[#173628] hover:bg-white"
-              >
-                {homeContent.hero.primaryCta.label}
-              </Button>
-              {homeContent.hero.secondaryCta ? (
-                <Button
-                  onClick={() => navigate(homeContent.hero.secondaryCta?.path ?? "/contact")}
-                  variant="outline"
-                  className="rounded-full border-white/25 bg-white/10 px-7 text-white hover:bg-white/18"
-                >
-                  {homeContent.hero.secondaryCta.label}
-                </Button>
-              ) : null}
-            </div>
-          </div>
+function ActionButton({
+  action,
+  navigate,
+  tone = "dark",
+  secondary = false,
+  className,
+}: {
+  action: CtaLink;
+  navigate: (path: string) => void;
+  tone?: "dark" | "cream";
+  secondary?: boolean;
+  className?: string;
+}) {
+  const classes = cn(
+    "site-label inline-flex items-center gap-2 rounded-[16px] px-5 py-4",
+    tone === "dark"
+      ? secondary
+        ? "border border-white/20 bg-transparent text-white hover:bg-white/10"
+        : "border border-[var(--color-cream)] bg-[var(--color-cream)] text-[var(--color-black)] hover:bg-white"
+      : secondary
+        ? "border border-black/15 bg-transparent text-[var(--color-black)] hover:bg-black/5"
+        : "border border-[var(--color-black)] bg-[var(--color-black)] text-white hover:bg-[var(--color-grey)]",
+    className
+  );
 
-          <div className="flex flex-col justify-between gap-12 lg:items-end">
-            <div className="max-w-md rounded-[2rem] border border-white/12 bg-white/8 px-6 py-7 backdrop-blur-sm">
-              <p className="text-sm uppercase tracking-[0.18em] text-white/60">
-                Community-led, systems-aware
-              </p>
-              <p className="font-editorial mt-4 text-3xl leading-tight text-white/92">
-                Strategy shaped with local realities, carried through with practical implementation support.
-              </p>
-            </div>
+  const content = (
+    <>
+      <span>{action.label}</span>
+      <ArrowRight className="h-4 w-4" />
+    </>
+  );
 
-            <div className="grid w-full gap-5 border-t border-white/15 pt-6 sm:grid-cols-3">
-              {homeContent.impactStats.map((stat) => (
-                <div key={stat.label}>
-                  <p className="font-editorial text-4xl leading-none text-[#f4d79a] sm:text-5xl">
-                    {stat.value}
-                  </p>
-                  <p className="mt-3 text-xs uppercase tracking-[0.18em] text-white/66">
-                    {stat.label}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+  if (action.path) {
+    return (
+      <Button onClick={() => navigate(action.path ?? "/")} className={classes}>
+        {content}
+      </Button>
+    );
+  }
 
-      <div className="mx-auto max-w-[92rem] space-y-20 px-4 sm:px-6 lg:px-8 sm:space-y-24">
-      <section className="border-y border-border/70 py-6">
-        <div className="grid items-center gap-5 lg:grid-cols-[0.55fr_1.45fr]">
-          <p className="text-sm uppercase tracking-[0.18em] text-primary/60">
-            {homeContent.partners.title}
-          </p>
-          <div className="grid gap-6 sm:grid-cols-3 lg:grid-cols-6">
-            {homeContent.partners.logos.map((logo) => (
-              <div key={logo.name} className="flex items-center justify-center py-3 opacity-75 grayscale transition hover:opacity-100 hover:grayscale-0">
-                <img src={logo.src} alt={logo.name} className="max-h-12 max-w-full object-contain" />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+  return (
+    <Button asChild className={classes}>
+      <a
+        href={action.href ?? "#"}
+        target={isExternalLink(action.href) ? "_blank" : undefined}
+        rel={isExternalLink(action.href) ? "noreferrer" : undefined}
+      >
+        {content}
+      </a>
+    </Button>
+  );
+}
 
-      <section className="grid gap-8 lg:grid-cols-[0.45fr_1.55fr] lg:gap-14">
-        <div>
-          <p className="text-sm uppercase tracking-[0.2em] text-primary/60">
-            {homeContent.manifesto.eyebrow}
-          </p>
-        </div>
-        <div>
-          <h2 className="font-editorial max-w-5xl text-5xl leading-[0.96] text-foreground sm:text-6xl">
-            {homeContent.manifesto.title}
-          </h2>
-          <div className="mt-8 max-w-4xl space-y-6 text-base leading-8 text-foreground/78 sm:text-lg">
-            {homeContent.manifesto.paragraphs.map((paragraph) => (
-              <p key={paragraph}>{paragraph}</p>
-            ))}
-          </div>
-        </div>
-      </section>
+function StatRow({
+  stats,
+  tone = "dark",
+  className,
+}: {
+  stats: Array<{ value: string; label: string }>;
+  tone?: "dark" | "cream";
+  className?: string;
+}) {
+  const labelClass = tone === "dark" ? "text-white/55" : "text-black/55";
+  const valueClass = tone === "dark" ? "text-white" : "text-[var(--color-black)]";
 
-      <section className="grid gap-10 lg:grid-cols-[0.58fr_1.42fr] lg:gap-14">
-        <div>
-          <p className="text-sm uppercase tracking-[0.2em] text-primary/60">Process</p>
-          <h2 className="font-editorial mt-4 text-4xl leading-tight text-foreground sm:text-5xl">
-            {homeContent.process.title}
-          </h2>
-          <p className="mt-5 max-w-md text-base leading-8 text-muted-foreground">
-            We move from listening to implementation in a way that protects local ownership and builds practical momentum.
-          </p>
+  return (
+    <div className={cn("grid gap-6 sm:grid-cols-3", className)}>
+      {stats.map((stat) => (
+        <div key={stat.label} className="border-t border-current/10 pt-4">
+          <p className={cn("site-title-md", valueClass)}>{stat.value}</p>
+          <p className={cn("site-label mt-3", labelClass)}>{stat.label}</p>
         </div>
-        <div className="relative border-l border-border/80 pl-8 sm:pl-10">
-          {homeContent.process.steps.map((step, index) => (
-            <div
-              key={step.title}
-              className={index === homeContent.process.steps.length - 1 ? "" : "pb-12"}
-            >
-              <div className="absolute -left-[0.56rem] mt-1 h-4 w-4 rounded-full border-4 border-background bg-primary" />
-              <p className="text-xs uppercase tracking-[0.22em] text-primary/60">
-                Step {String(index + 1).padStart(2, "0")}
-              </p>
-              <h3 className="font-editorial mt-3 text-3xl text-foreground sm:text-4xl">
-                {step.title}
-              </h3>
-              <p className="mt-4 max-w-3xl text-base leading-8 text-muted-foreground">
-                {step.description}
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
+      ))}
+    </div>
+  );
+}
 
-      <section className="grid gap-10 lg:grid-cols-[0.62fr_1.38fr] lg:gap-14">
-        <div>
-          <p className="text-sm uppercase tracking-[0.2em] text-primary/60">Focus Areas</p>
-          <h2 className="font-editorial mt-4 text-4xl leading-tight text-foreground sm:text-5xl">
-            {homeContent.focusAreas.title}
-          </h2>
-          <p className="mt-5 max-w-md text-base leading-8 text-muted-foreground">
-            {homeContent.focusAreas.intro}
-          </p>
-        </div>
-        <div className="divide-y divide-border/70 border-y border-border/70">
-          {homeContent.focusAreas.items.map((item) => (
-            <div key={item.title} className="grid gap-4 py-7 lg:grid-cols-[0.8fr_1.2fr]">
-              <div className="flex items-start gap-3">
-                <div className="mt-2 h-2.5 w-2.5 rounded-full bg-primary" />
-                <h3 className="font-editorial text-3xl text-foreground sm:text-[2.15rem]">
-                  {item.title}
-                </h3>
-              </div>
-              <p className="text-base leading-8 text-muted-foreground">
-                {item.description}
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
+function FeaturedProject({
+  project,
+  category,
+  navigate,
+  tone = "cream",
+  reversed = false,
+}: {
+  project: ProjectListItem & { category?: string };
+  category: string;
+  navigate: (path: string) => void;
+  tone?: "dark" | "cream";
+  reversed?: boolean;
+}) {
+  const textTone = tone === "dark" ? "text-white" : "text-[var(--color-black)]";
+  const mutedTone = tone === "dark" ? "text-white/60" : "text-black/60";
+  const imagePanelClass =
+    tone === "dark"
+      ? "border-white/10 bg-white/5"
+      : "border-black/10 bg-black/[0.03]";
 
-      <section className="space-y-10">
-        <div className="grid gap-6 lg:grid-cols-[0.72fr_1.28fr] lg:gap-14">
-          <p className="text-sm uppercase tracking-[0.2em] text-primary/60">
-            Featured Work
-          </p>
-          <div>
-            <h2 className="font-editorial text-5xl leading-[0.96] text-foreground sm:text-6xl">
-              {homeContent.featuredProjects.title}
-            </h2>
-            <p className="mt-5 max-w-3xl text-base leading-8 text-muted-foreground sm:text-lg">
-              {homeContent.featuredProjects.description}
-            </p>
-          </div>
-        </div>
-
-        <div className="space-y-12">
-          {featuredProjects.map(({ item, project }, index) => (
-            <article
-              key={item.slug}
-              className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12"
-            >
-              <div className={index % 2 === 1 ? "lg:order-2" : ""}>
-                <img
-                  src={item.image.src}
-                  alt={item.image.alt}
-                  className="h-[24rem] w-full rounded-[2rem] object-cover shadow-[0_22px_80px_rgba(29,39,31,0.12)] sm:h-[30rem]"
-                />
-              </div>
-              <div className={index % 2 === 1 ? "lg:order-1" : ""}>
-                <p className="text-sm uppercase tracking-[0.18em] text-primary/60">
-                  {project?.category ?? "Featured project"}
-                </p>
-                <h3 className="font-editorial mt-4 text-4xl leading-tight text-foreground sm:text-5xl">
-                  {project?.title ?? item.label}
-                </h3>
-                <p className="mt-4 text-sm uppercase tracking-[0.14em] text-foreground/56">
-                  {project?.location ?? ""}
-                </p>
-                <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
-                  {project?.challenge ?? item.label}
-                </p>
-                <div className="mt-8 flex flex-wrap gap-6">
-                  {(project?.stats ?? []).slice(0, 2).map((stat) => (
-                    <div key={stat.label}>
-                      <p className="font-editorial text-4xl leading-none text-primary">
-                        {stat.value}
-                      </p>
-                      <p className="mt-2 text-xs uppercase tracking-[0.18em] text-foreground/60">
-                        {stat.label}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-                <Button
-                  onClick={() => navigate(`/projects/${item.slug}`)}
-                  variant="link"
-                  className="mt-8 h-auto p-0 text-base font-semibold text-primary"
-                >
-                  Read the case study
-                  <ChevronRight className="ml-1 h-4 w-4" />
-                </Button>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="grid gap-8 border-y border-border/70 py-14 lg:grid-cols-[1.18fr_0.82fr] lg:items-end">
-        <div>
-          <p className="text-sm uppercase tracking-[0.2em] text-primary/60">
-            {homeContent.impactStatement.eyebrow}
-          </p>
-          <h2 className="font-editorial mt-5 max-w-5xl text-5xl leading-[0.96] text-foreground sm:text-6xl">
-            {homeContent.impactStatement.title}
-          </h2>
-        </div>
-        <div>
-          <p className="max-w-xl text-base leading-8 text-muted-foreground sm:text-lg">
-            {homeContent.impactStatement.description}
-          </p>
-          <div className="mt-10 grid gap-6 sm:grid-cols-3">
-            {homeContent.impactStats.map((stat) => (
-              <div key={stat.label}>
-                <p className="font-editorial text-5xl leading-none text-primary sm:text-6xl">
-                  {stat.value}
-                </p>
-                <p className="mt-3 text-xs uppercase tracking-[0.18em] text-foreground/60">
-                  {stat.label}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="grid gap-8 pb-4 lg:grid-cols-[1fr_auto] lg:items-end">
-        <div>
-          <p className="text-sm uppercase tracking-[0.2em] text-primary/60">
-            Next Project
-          </p>
-          <h2 className="font-editorial mt-4 text-5xl leading-[0.96] text-foreground sm:text-6xl">
-            {homeContent.cta.title}
-          </h2>
-          <p className="mt-5 max-w-3xl text-base leading-8 text-muted-foreground sm:text-lg">
-            {homeContent.cta.description}
-          </p>
-        </div>
-        <div className="flex flex-wrap gap-3">
+  return (
+    <FadeIn
+      className={cn(
+        "grid items-start gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-12",
+        reversed && "lg:[&>*:first-child]:order-2 lg:[&>*:last-child]:order-1"
+      )}
+    >
+      <ImagePanel image={getProjectImage(project)} className={cn("h-[300px] md:h-[380px]", imagePanelClass)} />
+      <div className={textTone}>
+        <SectionLabel className={mutedTone}>{project.category ?? category}</SectionLabel>
+        <h3 className="site-title-lg mt-5">{project.title}</h3>
+        {project.description ? (
+          <p className={cn("site-copy-md mt-6 max-w-2xl", mutedTone)}>{project.description}</p>
+        ) : null}
+        {project.stats?.length ? (
+          <StatRow
+            stats={project.stats}
+            tone={tone}
+            className="mt-8 sm:grid-cols-2"
+          />
+        ) : null}
+        {project.slug ? (
           <Button
-            onClick={() => navigate(homeContent.cta.primary.path ?? "/contact")}
-            className="rounded-full bg-primary px-7 text-primary-foreground hover:bg-primary/90"
+            onClick={() => navigate(`/projects/${project.slug}`)}
+            variant="link"
+            className={cn(
+              "site-label mt-8 inline-flex items-center gap-2 p-0",
+              tone === "dark" ? "text-white" : "text-[var(--color-black)]"
+            )}
           >
-            {homeContent.cta.primary.label}
+            Read project
+            <ChevronRight className="h-4 w-4" />
           </Button>
-          {homeContent.cta.secondary ? (
-            <Button
-              onClick={() => navigate(homeContent.cta.secondary?.path ?? "/projects")}
-              variant="outline"
-              className="rounded-full border-primary/20 bg-white px-7 text-primary"
-            >
-              {homeContent.cta.secondary.label}
-            </Button>
-          ) : null}
-        </div>
-      </section>
+        ) : null}
       </div>
+    </FadeIn>
+  );
+}
+
+function PageHero({
+  eyebrow,
+  title,
+  description,
+  image,
+  actions,
+  children,
+}: {
+  eyebrow?: string;
+  title: string;
+  description: string | string[];
+  image: ImageAsset;
+  actions?: ReactNode;
+  children?: ReactNode;
+}) {
+  const paragraphs = Array.isArray(description) ? description : [description];
+
+  return (
+    <PageBand tone="dark" className="pt-6">
+      <div className="grid items-end gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12">
+        <FadeIn>
+          {eyebrow ? <SectionLabel className="text-white/60">{eyebrow}</SectionLabel> : null}
+          <h1 className="site-title-xl mt-6 max-w-5xl">{title}</h1>
+          <div className="mt-8 max-w-2xl space-y-4">
+            {paragraphs.map((paragraph) => (
+              <p key={paragraph} className="site-copy-lg text-white/72">
+                {paragraph}
+              </p>
+            ))}
+          </div>
+          {actions ? <div className="mt-10 flex flex-wrap gap-3">{actions}</div> : null}
+          {children ? <div className="mt-14">{children}</div> : null}
+        </FadeIn>
+
+        <FadeIn delay={0.08}>
+          <ImagePanel image={image} className="h-[420px] border-white/10 bg-white/5 md:h-[560px]" />
+        </FadeIn>
+      </div>
+    </PageBand>
+  );
+}
+
+export function HomePage({ navigate }: { navigate: (path: string) => void }) {
+  return (
+    <div>
+      <PageHero
+        eyebrow={homeContent.hero.eyebrow || undefined}
+        title={homeContent.hero.title}
+        description={homeContent.hero.description}
+        image={homeContent.hero.image}
+        actions={
+          <>
+            <ActionButton action={homeContent.hero.primaryCta} navigate={navigate} />
+            {homeContent.hero.secondaryCta ? (
+              <ActionButton
+                action={homeContent.hero.secondaryCta}
+                navigate={navigate}
+                secondary
+              />
+            ) : null}
+          </>
+        }
+      >
+        <StatRow stats={homeContent.impactStats} />
+      </PageHero>
+
+      <PageBand tone="cream">
+        <div className="grid gap-10 lg:grid-cols-[0.38fr_1.62fr]">
+          <FadeIn>
+            <SectionLabel className="text-black/55">{homeContent.partners.title}</SectionLabel>
+          </FadeIn>
+          <FadeIn delay={0.04}>
+            <div className="grid gap-6 sm:grid-cols-3 lg:grid-cols-6">
+              {homeContent.partners.logos.map((logo) => (
+                <div
+                  key={logo.name}
+                  className="flex min-h-[96px] items-center justify-center rounded-[16px] border border-black/10 bg-white/40 px-5 py-6"
+                >
+                  <img src={logo.src} alt={logo.name} className="max-h-12 w-auto max-w-full object-contain" />
+                </div>
+              ))}
+            </div>
+          </FadeIn>
+        </div>
+      </PageBand>
+
+      <PageBand tone="dark">
+        <div className="grid gap-10 lg:grid-cols-[0.42fr_1.58fr]">
+          <FadeIn>
+            <SectionLabel className="text-white/55">{homeContent.manifesto.eyebrow}</SectionLabel>
+          </FadeIn>
+          <FadeIn delay={0.05}>
+            <h2 className="site-title-lg max-w-5xl">{homeContent.manifesto.title}</h2>
+            <div className="mt-8 max-w-4xl space-y-5">
+              {homeContent.manifesto.paragraphs.map((paragraph) => (
+                <p key={paragraph} className="site-copy-md text-white/68">
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+          </FadeIn>
+        </div>
+      </PageBand>
+
+      <PageBand tone="cream">
+        <div className="grid gap-10 lg:grid-cols-[0.42fr_1.58fr]">
+          <FadeIn>
+            <SectionLabel className="text-black/55">Process</SectionLabel>
+            <h2 className="site-title-lg mt-5">{homeContent.process.title}</h2>
+          </FadeIn>
+          <div className="grid gap-4">
+            {homeContent.process.steps.map((step, index) => (
+              <FadeIn
+                key={step.title}
+                delay={index * 0.04}
+                className="grid gap-4 rounded-[16px] border border-black/10 bg-white/45 p-6 md:grid-cols-[120px_1fr]"
+              >
+                <p className="site-label text-black/50">
+                  {String(index + 1).padStart(2, "0")}
+                </p>
+                <div>
+                  <h3 className="site-title-md">{step.title}</h3>
+                  <p className="site-copy-sm mt-4 max-w-3xl text-black/65">{step.description}</p>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </PageBand>
+
+      <PageBand tone="grey">
+        <div className="grid gap-10 lg:grid-cols-[0.42fr_1.58fr]">
+          <FadeIn>
+            <SectionLabel className="text-white/55">Focus Areas</SectionLabel>
+            <h2 className="site-title-lg mt-5">{homeContent.focusAreas.title}</h2>
+            <p className="site-copy-md mt-6 max-w-md text-white/65">
+              {homeContent.focusAreas.intro}
+            </p>
+          </FadeIn>
+          <div className="grid gap-3">
+            {homeContent.focusAreas.items.map((item, index) => (
+              <FadeIn
+                key={item.title}
+                delay={index * 0.04}
+                className="grid gap-4 rounded-[16px] border border-white/10 bg-white/[0.04] p-6 md:grid-cols-[0.75fr_1.25fr]"
+              >
+                <h3 className="site-title-md">{item.title}</h3>
+                <p className="site-copy-sm text-white/65">{item.description}</p>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </PageBand>
+
+      <PageBand tone="cream">
+        <FadeIn>
+          <SectionLabel className="text-black/55">Featured Work</SectionLabel>
+          <h2 className="site-title-lg mt-5 max-w-4xl">{homeContent.featuredProjects.title}</h2>
+          <p className="site-copy-md mt-6 max-w-3xl text-black/65">
+            {homeContent.featuredProjects.description}
+          </p>
+        </FadeIn>
+        <div className="mt-12 grid gap-14">
+          {homeContent.featuredProjects.items.map((project, index) => (
+            <FeaturedProject
+              key={`${project.category}-${project.title}`}
+              project={project}
+              category={project.category}
+              navigate={navigate}
+              tone="cream"
+              reversed={index % 2 === 1}
+            />
+          ))}
+        </div>
+      </PageBand>
+
+      <PageBand tone="dark">
+        <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
+          <FadeIn>
+            <SectionLabel className="text-white/55">{homeContent.impactStatement.eyebrow}</SectionLabel>
+            <h2 className="site-title-lg mt-5 max-w-5xl">{homeContent.impactStatement.title}</h2>
+          </FadeIn>
+          <FadeIn delay={0.05}>
+            <p className="site-copy-md max-w-xl text-white/65">
+              {homeContent.impactStatement.description}
+            </p>
+            <StatRow stats={homeContent.impactStats} className="mt-10" />
+          </FadeIn>
+        </div>
+      </PageBand>
+
+      <PageBand tone="cream">
+        <div className="grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
+          <FadeIn>
+            <SectionLabel className="text-black/55">Next Step</SectionLabel>
+            <h2 className="site-title-lg mt-5">{homeContent.cta.title}</h2>
+            <p className="site-copy-md mt-6 max-w-3xl text-black/65">
+              {homeContent.cta.description}
+            </p>
+          </FadeIn>
+          <FadeIn delay={0.05} className="flex flex-wrap gap-3">
+            <ActionButton action={homeContent.cta.primary} navigate={navigate} tone="cream" />
+            {homeContent.cta.secondary ? (
+              <ActionButton
+                action={homeContent.cta.secondary}
+                navigate={navigate}
+                tone="cream"
+                secondary
+              />
+            ) : null}
+          </FadeIn>
+        </div>
+      </PageBand>
     </div>
   );
 }
 
 export function AboutPage({ navigate }: { navigate: (path: string) => void }) {
   return (
-    <div className="space-y-20 sm:space-y-24">
-      <PageIntro
+    <div>
+      <PageHero
         eyebrow={aboutContent.hero.eyebrow}
         title={aboutContent.hero.title}
         description={aboutContent.hero.description}
         image={aboutContent.hero.image}
       />
 
-      <div className="mx-auto max-w-[92rem] space-y-20 px-4 sm:px-6 lg:px-8 sm:space-y-24">
-        <section className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
-          <div>
-            <p className="text-sm uppercase tracking-[0.2em] text-primary/60">About</p>
-            <h2 className="font-editorial mt-4 text-5xl leading-[0.96] text-foreground sm:text-6xl">
-              Building capacity with communities, not around them.
-            </h2>
-          </div>
-          <div className="space-y-6 text-base leading-8 text-muted-foreground sm:text-lg">
-            <p>{aboutContent.about.description}</p>
-            <p>{aboutContent.ethos.description}</p>
-          </div>
-        </section>
+      <PageBand tone="cream">
+        <div className="grid gap-12 lg:grid-cols-2">
+          <FadeIn>
+            <SectionLabel className="text-black/55">About</SectionLabel>
+            <h2 className="site-title-lg mt-5">{aboutContent.about.title}</h2>
+            <p className="site-copy-md mt-6 max-w-3xl text-black/65">
+              {aboutContent.about.description}
+            </p>
+          </FadeIn>
+          <FadeIn delay={0.05}>
+            <SectionLabel className="text-black/55">{aboutContent.ethos.title}</SectionLabel>
+            <p className="site-copy-md mt-5 max-w-3xl text-black/65">
+              {aboutContent.ethos.description}
+            </p>
+          </FadeIn>
+        </div>
+      </PageBand>
 
-        <section className="grid gap-10 lg:grid-cols-[1.02fr_0.98fr] lg:gap-16">
-          <ImageFrame image={aboutContent.hero.image} className="min-h-[31rem]" />
-          <div className="border-t border-foreground/10 pt-6">
-            <p className="text-sm uppercase tracking-[0.2em] text-primary/60">Our Approach</p>
-            <h3 className="font-editorial mt-4 text-4xl text-foreground sm:text-5xl">
-              {aboutContent.approach.title}
-            </h3>
-            <p className="mt-6 text-base leading-8 text-muted-foreground sm:text-lg">
+      <PageBand tone="grey">
+        <div className="grid gap-12 lg:grid-cols-[0.92fr_1.08fr]">
+          <FadeIn>
+            <SectionLabel className="text-white/55">{aboutContent.approach.title}</SectionLabel>
+            <h2 className="site-title-lg mt-5">{aboutContent.hero.title}</h2>
+            <p className="site-copy-md mt-6 max-w-2xl text-white/65">
               {aboutContent.approach.description}
             </p>
-            <div className="mt-10 border-t border-foreground/10 pt-6">
-              <p className="text-sm uppercase tracking-[0.2em] text-primary/60">
-                Guiding Principles
-              </p>
-              <div className="mt-5 divide-y divide-border/70 border-y border-border/70">
-                {aboutContent.guidingPrinciples.items.map((item) => (
-                  <div key={item} className="py-4 text-base leading-8 text-foreground/78">
-                    {item}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="space-y-10">
-          <div className="grid gap-6 lg:grid-cols-[0.72fr_1.28fr] lg:gap-16">
-            <p className="text-sm uppercase tracking-[0.2em] text-primary/60">Meet the Team</p>
-            <div>
-              <h2 className="font-editorial text-5xl leading-[0.96] text-foreground sm:text-6xl">
-                Experienced practitioners working across planning, governance, and implementation.
-              </h2>
-            </div>
-          </div>
-          <div className="space-y-14">
-            {aboutContent.team.members.map((member, index) => (
-              <article
-                key={member.name}
-                className="grid items-start gap-8 lg:grid-cols-[0.42fr_0.58fr] lg:gap-14"
+          </FadeIn>
+          <div className="grid gap-3">
+            <FadeIn delay={0.05}>
+              <SectionLabel className="text-white/55">{aboutContent.guidingPrinciples.title}</SectionLabel>
+            </FadeIn>
+            {aboutContent.guidingPrinciples.items.map((item, index) => (
+              <FadeIn
+                key={item}
+                delay={0.08 + index * 0.03}
+                className="rounded-[16px] border border-white/10 bg-white/[0.04] px-5 py-5"
               >
-                <div className={index % 2 === 1 ? "lg:order-2" : ""}>
-                  <img
-                    src={member.image.src}
-                    alt={member.image.alt}
-                    className="h-[24rem] w-full object-cover object-top shadow-[0_22px_80px_rgba(29,39,31,0.12)] sm:h-[30rem]"
-                  />
-                </div>
-                <div className={index % 2 === 1 ? "lg:order-1" : ""}>
-                  <p className="text-sm uppercase tracking-[0.18em] text-primary/60">
-                    {member.role}
-                  </p>
-                  <h3 className="font-editorial mt-4 text-4xl leading-tight text-foreground sm:text-5xl">
-                    {member.name}
-                  </h3>
-                  <p className="mt-6 text-base leading-8 text-muted-foreground sm:text-lg">
-                    {member.bio}
-                  </p>
-                </div>
-              </article>
+                <p className="site-copy-sm text-white/68">{item}</p>
+              </FadeIn>
             ))}
           </div>
-        </section>
+        </div>
+      </PageBand>
 
-        <section className="border-y border-border/70 py-8">
-          <div className="grid items-center gap-5 lg:grid-cols-[0.6fr_1.4fr]">
-            <p className="text-sm uppercase tracking-[0.2em] text-primary/60">Trusted Partners</p>
+      <PageBand tone="cream">
+        <FadeIn>
+          <SectionLabel className="text-black/55">{aboutContent.team.title}</SectionLabel>
+          <h2 className="site-title-lg mt-5 max-w-4xl">
+            Building capacity. Empowering communities.
+          </h2>
+        </FadeIn>
+        <div className="mt-12 grid gap-14">
+          {aboutContent.team.members.map((member, index) => (
+            <FadeIn
+              key={member.name}
+              delay={index * 0.04}
+              className={cn(
+                "grid items-start gap-8 lg:grid-cols-[0.86fr_1.14fr]",
+                index % 2 === 1 && "lg:[&>*:first-child]:order-2 lg:[&>*:last-child]:order-1"
+              )}
+            >
+              <ImagePanel
+                image={member.image}
+                className="h-[320px] border-black/10 bg-black/[0.03] md:h-[420px]"
+              />
+              <div>
+                <SectionLabel className="text-black/50">{member.role}</SectionLabel>
+                <h3 className="site-title-md mt-5">{member.name}</h3>
+                <p className="site-copy-md mt-6 max-w-3xl text-black/65">{member.bio}</p>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+      </PageBand>
+
+      <PageBand tone="dark">
+        <div className="grid gap-10 lg:grid-cols-[0.35fr_1.65fr]">
+          <FadeIn>
+            <SectionLabel className="text-white/55">Partners</SectionLabel>
+          </FadeIn>
+          <FadeIn delay={0.04}>
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {aboutContent.partnerLogos.map((logo) => (
-                <div key={logo.name} className="flex items-center justify-center py-3 opacity-80 grayscale transition hover:opacity-100 hover:grayscale-0">
-                  <img src={logo.src} alt={logo.name} className="max-h-12 max-w-full object-contain" />
+                <div
+                  key={logo.name}
+                  className="flex min-h-[96px] items-center justify-center rounded-[16px] border border-white/10 bg-white/5 px-5 py-6"
+                >
+                  <img src={logo.src} alt={logo.name} className="max-h-12 w-auto max-w-full object-contain" />
                 </div>
               ))}
             </div>
-          </div>
-        </section>
+          </FadeIn>
+        </div>
+      </PageBand>
 
-        <section className="grid gap-8 pb-4 lg:grid-cols-[1fr_auto] lg:items-end">
-          <div>
-            <p className="text-sm uppercase tracking-[0.2em] text-primary/60">
-              {aboutContent.partnersCta.eyebrow}
-            </p>
-            <h2 className="font-editorial mt-4 text-5xl leading-[0.96] text-foreground sm:text-6xl">
-              {aboutContent.partnersCta.title}
-            </h2>
-            <p className="mt-5 max-w-3xl text-base leading-8 text-muted-foreground sm:text-lg">
+      <PageBand tone="cream">
+        <div className="grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
+          <FadeIn>
+            <SectionLabel className="text-black/55">{aboutContent.partnersCta.eyebrow}</SectionLabel>
+            <h2 className="site-title-lg mt-5">{aboutContent.partnersCta.title}</h2>
+            <p className="site-copy-md mt-6 max-w-3xl text-black/65">
               {aboutContent.partnersCta.description}
             </p>
-          </div>
-          <Button
-            onClick={() => navigate(aboutContent.partnersCta.primary.path ?? "/contact")}
-            className="rounded-full bg-primary px-7 text-primary-foreground hover:bg-primary/90"
-          >
-            {aboutContent.partnersCta.primary.label}
-          </Button>
-        </section>
-      </div>
+          </FadeIn>
+          <FadeIn delay={0.04}>
+            <ActionButton action={aboutContent.partnersCta.primary} navigate={navigate} tone="cream" />
+          </FadeIn>
+        </div>
+      </PageBand>
     </div>
   );
 }
 
 export function ServicesPage({ navigate }: { navigate: (path: string) => void }) {
   return (
-    <div className="space-y-20 sm:space-y-24">
-      <PageIntro
+    <div>
+      <PageHero
         eyebrow={servicesContent.hero.eyebrow}
         title={servicesContent.hero.title}
         description={servicesContent.hero.intro}
         image={servicesContent.hero.image}
+        actions={
+          <>
+            <ActionButton action={servicesContent.hero.primaryCta} navigate={navigate} />
+            <ActionButton action={servicesContent.hero.secondaryCta} navigate={navigate} secondary />
+          </>
+        }
       />
 
-      <div className="mx-auto max-w-[92rem] space-y-20 px-4 sm:px-6 lg:px-8 sm:space-y-24">
-        <section className="grid gap-10 lg:grid-cols-[0.6fr_1.4fr] lg:gap-16">
-          <div>
-            <p className="text-sm uppercase tracking-[0.2em] text-primary/60">
-              {servicesContent.sectionIntro.eyebrow}
-            </p>
-          </div>
-          <div>
-            <h2 className="font-editorial text-5xl leading-[0.96] text-foreground sm:text-6xl">
-              {servicesContent.sectionIntro.title}
-            </h2>
-            <p className="mt-6 max-w-4xl text-base leading-8 text-muted-foreground sm:text-lg">
+      <PageBand tone="cream">
+        <div className="grid gap-10 lg:grid-cols-[0.42fr_1.58fr]">
+          <FadeIn>
+            <SectionLabel className="text-black/55">{servicesContent.sectionIntro.eyebrow}</SectionLabel>
+          </FadeIn>
+          <FadeIn delay={0.05}>
+            <h2 className="site-title-lg max-w-5xl">{servicesContent.sectionIntro.title}</h2>
+            <p className="site-copy-md mt-6 max-w-4xl text-black/65">
               {servicesContent.sectionIntro.description}
             </p>
-          </div>
-        </section>
+          </FadeIn>
+        </div>
+      </PageBand>
 
-        <section className="space-y-16">
-          {servicesContent.services.map((service, index) => (
-            <article
-              key={service.title}
-              className="border-t border-foreground/10 pt-8"
-            >
-              <div className="grid gap-8 lg:grid-cols-[0.48fr_0.52fr] lg:gap-16">
-                <div>
-                  <p className="text-sm uppercase tracking-[0.18em] text-primary/60">
-                    Service {String(index + 1).padStart(2, "0")}
-                  </p>
-                  <h3 className="font-editorial mt-4 text-4xl leading-tight text-foreground sm:text-5xl">
-                    {service.title}
-                  </h3>
-                  <p className="mt-5 text-base leading-8 text-foreground/80 sm:text-lg">
-                    {service.summary}
-                  </p>
-                  <p className="mt-6 text-sm font-semibold uppercase tracking-[0.14em] text-primary/70">
-                    {service.cta}
-                  </p>
-                </div>
+      {servicesContent.services.map((service, index) => {
+        const tone = index % 2 === 0 ? "dark" : "cream";
+        const labelColor = tone === "dark" ? "text-white/55" : "text-black/55";
+        const bodyColor = tone === "dark" ? "text-white/65" : "text-black/65";
+        const cardClass =
+          tone === "dark"
+            ? "border-white/10 bg-white/5"
+            : "border-black/10 bg-white/45";
 
-                <div className="space-y-8">
-                  <div className="space-y-5">
-                    {service.description.map((paragraph) => (
-                      <p
-                        key={paragraph}
-                        className="text-base leading-8 text-muted-foreground"
-                      >
-                        {paragraph}
-                      </p>
-                    ))}
-                  </div>
-
-                  <div className="grid gap-3 border-t border-border/70 pt-6">
-                    <p className="text-sm uppercase tracking-[0.18em] text-primary/60">
-                      What We Offer
+        return (
+          <PageBand key={service.title} tone={tone}>
+            <div className="grid gap-10 lg:grid-cols-[0.92fr_1.08fr]">
+              <FadeIn>
+                <SectionLabel className={labelColor}>{service.title}</SectionLabel>
+                <h2 className="site-title-lg mt-5 max-w-3xl">{service.summary}</h2>
+                <p className={cn("site-copy-sm mt-6", labelColor)}>{service.cta}</p>
+              </FadeIn>
+              <div className="grid gap-5">
+                <FadeIn delay={0.04} className="space-y-5">
+                  {service.description.map((paragraph) => (
+                    <p key={paragraph} className={cn("site-copy-md", bodyColor)}>
+                      {paragraph}
                     </p>
+                  ))}
+                </FadeIn>
+                <FadeIn delay={0.08} className={cn("rounded-[16px] border p-6", cardClass)}>
+                  <SectionLabel className={labelColor}>What We Offer</SectionLabel>
+                  <div className="mt-5 grid gap-3">
                     {service.offerings.map((offering) => (
-                      <div
-                        key={offering}
-                        className="border-b border-border/70 pb-3 text-base leading-7 text-foreground/78"
-                      >
-                        {offering}
+                      <div key={offering} className="border-t border-current/10 pt-3">
+                        <p className={cn("site-copy-sm", bodyColor)}>{offering}</p>
                       </div>
                     ))}
                   </div>
-                </div>
+                </FadeIn>
               </div>
-            </article>
-          ))}
-        </section>
+            </div>
+          </PageBand>
+        );
+      })}
 
-        <section className="grid gap-10 border-y border-border/70 py-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
-          <div>
-            <p className="text-sm uppercase tracking-[0.2em] text-primary/60">Track Record</p>
-            <h2 className="font-editorial mt-4 text-5xl leading-[0.96] text-foreground sm:text-6xl">
+      <PageBand tone="grey">
+        <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
+          <FadeIn>
+            <SectionLabel className="text-white/55">Track Record</SectionLabel>
+            <h2 className="site-title-lg mt-5 max-w-4xl">
               A service approach shaped by field experience and long-term systems thinking.
             </h2>
-            <p className="mt-6 max-w-3xl text-base leading-8 text-muted-foreground sm:text-lg">
-              We pair technical support with participatory practice so communities and institutions can move from planning to implementation with confidence.
-            </p>
-          </div>
-          <div className="grid gap-6 sm:grid-cols-3 lg:grid-cols-1">
-            {servicesContent.stats.map((stat) => (
-              <div key={stat.label}>
-                <p className="font-editorial text-5xl leading-none text-primary sm:text-6xl">
-                  {stat.value}
-                </p>
-                <p className="mt-3 text-xs uppercase tracking-[0.18em] text-foreground/60">
-                  {stat.label}
-                </p>
-              </div>
-            ))}
-          </div>
-        </section>
+          </FadeIn>
+          <FadeIn delay={0.05}>
+            <StatRow stats={servicesContent.stats} />
+          </FadeIn>
+        </div>
+      </PageBand>
 
-        <section className="grid gap-8 pb-4 lg:grid-cols-[1fr_auto] lg:items-end">
-          <div>
-            <p className="text-sm uppercase tracking-[0.2em] text-primary/60">
-              Let's Work Together
-            </p>
-            <h2 className="font-editorial mt-4 text-5xl leading-[0.96] text-foreground sm:text-6xl">
-              {servicesContent.bottomCta.title}
-            </h2>
-            <p className="mt-5 max-w-3xl text-base leading-8 text-muted-foreground sm:text-lg">
+      <PageBand tone="cream">
+        <div className="grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
+          <FadeIn>
+            <SectionLabel className="text-black/55">Next Step</SectionLabel>
+            <h2 className="site-title-lg mt-5">{servicesContent.bottomCta.title}</h2>
+            <p className="site-copy-md mt-6 max-w-3xl text-black/65">
               {servicesContent.bottomCta.description}
             </p>
-          </div>
-          <div className="flex flex-wrap gap-3">
-            <Button
-              onClick={() => navigate(servicesContent.bottomCta.primary.path ?? "/contact")}
-              className="rounded-full bg-primary px-7 text-primary-foreground hover:bg-primary/90"
-            >
-              {servicesContent.bottomCta.primary.label}
-            </Button>
+          </FadeIn>
+          <FadeIn delay={0.04} className="flex flex-wrap gap-3">
+            <ActionButton action={servicesContent.bottomCta.primary} navigate={navigate} tone="cream" />
             {servicesContent.bottomCta.secondary ? (
-              <Button
-                onClick={() => navigate(servicesContent.bottomCta.secondary?.path ?? "/projects")}
-                variant="outline"
-                className="rounded-full border-primary/20 bg-white px-7 text-primary"
-              >
-                {servicesContent.bottomCta.secondary.label}
-              </Button>
+              <ActionButton
+                action={servicesContent.bottomCta.secondary}
+                navigate={navigate}
+                tone="cream"
+                secondary
+              />
             ) : null}
-          </div>
-        </section>
-      </div>
+          </FadeIn>
+        </div>
+      </PageBand>
     </div>
   );
 }
 
-export function ProjectsPage({
-  navigate,
-  projects,
-}: {
-  navigate: (path: string) => void;
-  projects: Map<string, ProjectDetail>;
-}) {
+export function ProjectsPage({ navigate }: { navigate: (path: string) => void }) {
   return (
-    <div className="space-y-20 sm:space-y-24">
-      <PageIntro
+    <div>
+      <PageHero
         eyebrow={projectsContent.hero.eyebrow}
         title={projectsContent.hero.title}
         description={projectsContent.hero.intro}
         image={projectsContent.hero.image}
       />
 
-      <div className="mx-auto max-w-[92rem] space-y-20 px-4 sm:px-6 lg:px-8 sm:space-y-24">
-        {projectsContent.categories.map((category, categoryIndex) => {
-          return (
-            <section key={category.title} className="space-y-8 border-t border-foreground/10 pt-8">
-              <div className="grid gap-6 lg:grid-cols-[0.62fr_1.38fr] lg:gap-16">
-                <div>
-                  <p className="text-sm uppercase tracking-[0.2em] text-primary/60">
-                    Category {String(categoryIndex + 1).padStart(2, "0")}
-                  </p>
-                  <h2 className="font-editorial mt-4 text-5xl leading-[0.96] text-foreground sm:text-6xl">
-                    {category.title}
-                  </h2>
-                </div>
-                <p className="max-w-3xl text-base leading-8 text-muted-foreground sm:text-lg">
-                  Selected work demonstrating how community-led planning translates into measurable outcomes.
-                </p>
-              </div>
+      {projectsContent.categories.map((category, index) => {
+        const tone = index % 2 === 0 ? "cream" : "grey";
 
-              <div className="space-y-12">
-                {category.projectSlugs.map((slug, projectIndex) => {
-                  const project = projects.get(`/projects/${slug}`);
+        return (
+          <PageBand key={category.title} tone={tone}>
+            <FadeIn>
+              <SectionLabel className={tone === "cream" ? "text-black/55" : "text-white/55"}>
+                {category.title}
+              </SectionLabel>
+              <h2 className="site-title-lg mt-5">{category.title}</h2>
+            </FadeIn>
+            <div className="mt-12 grid gap-14">
+              {category.projects.map((project, projectIndex) => (
+                <FeaturedProject
+                  key={`${category.title}-${project.title}`}
+                  project={project}
+                  category={category.title}
+                  navigate={navigate}
+                  tone={tone === "cream" ? "cream" : "dark"}
+                  reversed={projectIndex % 2 === 1}
+                />
+              ))}
+            </div>
+          </PageBand>
+        );
+      })}
 
-                  if (!project) {
-                    return null;
-                  }
-
-                  return (
-                    <MotionCard
-                      key={project.slug}
-                      delay={projectIndex * 0.05}
-                      className="grid items-center gap-8 lg:grid-cols-[0.42fr_0.58fr] lg:gap-14"
-                    >
-                      <div className={projectIndex % 2 === 1 ? "lg:order-2" : ""}>
-                        <img
-                          src={getProjectImage(project).src}
-                          alt={getProjectImage(project).alt}
-                          className="h-[22rem] w-full object-cover shadow-[0_22px_80px_rgba(29,39,31,0.12)] sm:h-[28rem]"
-                        />
-                      </div>
-
-                      <div className={projectIndex % 2 === 1 ? "lg:order-1" : ""}>
-                        <p className="text-sm uppercase tracking-[0.18em] text-primary/60">
-                          {project.category}
-                        </p>
-                        <h3 className="font-editorial mt-4 text-4xl leading-tight text-foreground sm:text-5xl">
-                          {project.title}
-                        </h3>
-                        <p className="mt-4 text-sm uppercase tracking-[0.14em] text-foreground/56">
-                          {project.location}
-                        </p>
-                        <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
-                          {project.challenge}
-                        </p>
-                        <div className="mt-8 flex flex-wrap gap-6">
-                          {project.stats.slice(0, 3).map((stat) => (
-                            <div key={stat.label}>
-                              <p className="font-editorial text-4xl leading-none text-primary">
-                                {stat.value}
-                              </p>
-                              <p className="mt-2 text-xs uppercase tracking-[0.18em] text-foreground/60">
-                                {stat.label}
-                              </p>
-                            </div>
-                          ))}
-                        </div>
-                        <Button
-                          onClick={() => navigate(`/projects/${project.slug}`)}
-                          variant="link"
-                          className="mt-8 h-auto p-0 text-base font-semibold text-primary"
-                        >
-                          Read the case study
-                          <ChevronRight className="ml-1 h-4 w-4" />
-                        </Button>
-                      </div>
-                    </MotionCard>
-                  );
-                })}
-              </div>
-            </section>
-          );
-        })}
-
-        <section className="grid gap-8 pb-4 lg:grid-cols-[1fr_auto] lg:items-end">
-          <div>
-            <p className="text-sm uppercase tracking-[0.2em] text-primary/60">Start Your Project</p>
-            <h2 className="font-editorial mt-4 text-5xl leading-[0.96] text-foreground sm:text-6xl">
-              {projectsContent.cta.title}
-            </h2>
-            <p className="mt-5 max-w-3xl text-base leading-8 text-muted-foreground sm:text-lg">
+      <PageBand tone="dark">
+        <div className="grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
+          <FadeIn>
+            <SectionLabel className="text-white/55">Next Step</SectionLabel>
+            <h2 className="site-title-lg mt-5">{projectsContent.cta.title}</h2>
+            <p className="site-copy-md mt-6 max-w-3xl text-white/65">
               {projectsContent.cta.description}
             </p>
-          </div>
-          <Button
-            onClick={() => navigate(projectsContent.cta.primary.path ?? "/contact")}
-            className="rounded-full bg-primary px-7 text-primary-foreground hover:bg-primary/90"
-          >
-            {projectsContent.cta.primary.label}
-          </Button>
-        </section>
-      </div>
+          </FadeIn>
+          <FadeIn delay={0.04}>
+            <ActionButton action={projectsContent.cta.primary} navigate={navigate} />
+          </FadeIn>
+        </div>
+      </PageBand>
     </div>
   );
 }
@@ -711,129 +676,76 @@ export function ProjectDetailPage({
   project: ProjectDetail;
 }) {
   return (
-    <div className="space-y-20 sm:space-y-24">
-      <section className="px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-[92rem] border-b border-foreground/10 pb-10">
-        <button
-          type="button"
-          onClick={() => navigate("/projects")}
-          className="inline-flex items-center gap-2 text-sm font-medium text-primary transition hover:text-primary/80"
-        >
-          <ChevronRight className="h-4 w-4 rotate-180" />
-          Back to Projects
-        </button>
-
-        <div className="mt-8 grid gap-10 lg:grid-cols-[1.02fr_0.98fr] lg:gap-16">
-          <div>
-            <p className="text-sm uppercase tracking-[0.18em] text-primary/60">
-              {project.category}
-            </p>
-            <h1 className="font-editorial mt-4 max-w-5xl text-5xl leading-[0.96] text-foreground sm:text-6xl">
-              {project.title}
-            </h1>
-            <p className="mt-5 text-base leading-8 text-foreground/76">
+    <div>
+      <PageBand tone="dark" className="pt-6">
+        <div className="grid gap-10 lg:grid-cols-[1.02fr_0.98fr]">
+          <FadeIn>
+            <Button
+              onClick={() => navigate("/projects")}
+              variant="link"
+              className="site-label inline-flex items-center gap-2 p-0 text-white/60"
+            >
+              <ChevronRight className="h-4 w-4 rotate-180" />
+              Back to projects
+            </Button>
+            <SectionLabel className="mt-10 text-white/55">{project.category}</SectionLabel>
+            <h1 className="site-title-xl mt-5 max-w-5xl">{project.title}</h1>
+            <p className="site-copy-sm mt-6 text-white/60">
               {project.location} | {project.duration}
             </p>
-            <div className="mt-10 overflow-hidden shadow-[0_22px_80px_rgba(29,39,31,0.12)]">
-              <img
-                src={getProjectImage(project).src}
-                alt={getProjectImage(project).alt}
-                className="h-[22rem] w-full object-cover"
-              />
-            </div>
-          </div>
-
-          <div className="grid gap-3">
-            {project.stats.map((stat) => (
-              <div
-                key={stat.label}
-                className="border-b border-border/70 pb-4"
-              >
-                <p className="font-editorial text-5xl leading-none text-primary">{stat.value}</p>
-                <p className="mt-1 text-sm uppercase tracking-[0.15em] text-foreground/68">
-                  {stat.label}
-                </p>
-              </div>
-            ))}
-            {(project.images?.length ?? 0) > 1 ? (
-              <div className="grid gap-3 sm:grid-cols-2">
-                {project.images?.slice(1, 3).map((image) => (
-                  <div
-                    key={image.src}
-                    className="overflow-hidden"
-                  >
-                    <img src={image.src} alt={image.alt} className="h-40 w-full object-cover" />
-                  </div>
-                ))}
-              </div>
-            ) : null}
-          </div>
+            {project.stats.length ? <StatRow stats={project.stats} className="mt-10" /> : null}
+          </FadeIn>
+          <FadeIn delay={0.08}>
+            <ImagePanel image={getProjectImage(project)} className="h-[420px] border-white/10 bg-white/5 md:h-[560px]" />
+          </FadeIn>
         </div>
+      </PageBand>
+
+      <PageBand tone="cream">
+        <div className="grid gap-10 lg:grid-cols-2">
+          <FadeIn className="rounded-[16px] border border-black/10 bg-white/45 p-6">
+            <SectionLabel className="text-black/55">The Challenge</SectionLabel>
+            <p className="site-copy-md mt-5 text-black/65">{project.challenge}</p>
+          </FadeIn>
+          <FadeIn delay={0.04} className="rounded-[16px] border border-black/10 bg-white/45 p-6">
+            <SectionLabel className="text-black/55">Our Approach</SectionLabel>
+            <p className="site-copy-md mt-5 text-black/65">{project.approach}</p>
+          </FadeIn>
         </div>
-      </section>
+      </PageBand>
 
-      <div className="mx-auto max-w-[92rem] space-y-20 px-4 sm:px-6 lg:px-8 sm:space-y-24">
-        <section className="grid gap-10 lg:grid-cols-2 lg:gap-16">
-          <div className="border-t border-foreground/10 pt-6">
-            <p className="text-sm uppercase tracking-[0.2em] text-primary/60">The Challenge</p>
-            <h2 className="font-editorial mt-4 text-4xl text-foreground sm:text-5xl">
-              The challenge we needed to solve.
-            </h2>
-            <p className="mt-6 text-base leading-8 text-muted-foreground sm:text-lg">
-              {project.challenge}
+      <PageBand tone="grey">
+        <FadeIn>
+          <SectionLabel className="text-white/55">Outcomes and Impact</SectionLabel>
+          <h2 className="site-title-lg mt-5">What changed through the work.</h2>
+        </FadeIn>
+        <div className="mt-10 grid gap-3">
+          {project.outcomes.map((outcome, index) => (
+            <FadeIn
+              key={outcome}
+              delay={index * 0.03}
+              className="rounded-[16px] border border-white/10 bg-white/[0.04] px-5 py-5"
+            >
+              <p className="site-copy-sm text-white/68">{outcome}</p>
+            </FadeIn>
+          ))}
+        </div>
+      </PageBand>
+
+      <PageBand tone="cream">
+        <div className="grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
+          <FadeIn>
+            <SectionLabel className="text-black/55">Next Step</SectionLabel>
+            <h2 className="site-title-lg mt-5">Start your project</h2>
+            <p className="site-copy-md mt-6 max-w-3xl text-black/65">
+              Every community has unique strengths. Let&apos;s discover yours together.
             </p>
-          </div>
-
-          <div className="border-t border-foreground/10 pt-6">
-            <p className="text-sm uppercase tracking-[0.2em] text-primary/60">Our Approach</p>
-            <h2 className="font-editorial mt-4 text-4xl text-foreground sm:text-5xl">
-              How we supported implementation.
-            </h2>
-            <p className="mt-6 text-base leading-8 text-muted-foreground sm:text-lg">
-              {project.approach}
-            </p>
-          </div>
-        </section>
-
-        <section className="space-y-8 border-t border-foreground/10 pt-8">
-          <div className="grid gap-6 lg:grid-cols-[0.7fr_1.3fr] lg:gap-16">
-            <p className="text-sm uppercase tracking-[0.2em] text-primary/60">Outcomes and Impact</p>
-            <div>
-              <h2 className="font-editorial text-5xl leading-[0.96] text-foreground sm:text-6xl">
-                What changed through the work.
-              </h2>
-              <p className="mt-5 max-w-3xl text-base leading-8 text-muted-foreground sm:text-lg">
-                Results documented through delivery, coordination, and local institutional strengthening.
-              </p>
-            </div>
-          </div>
-          <div className="divide-y divide-border/70 border-y border-border/70">
-            {project.outcomes.map((outcome) => (
-              <div key={outcome} className="py-5 text-base leading-8 text-foreground/78">
-                {outcome}
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="grid gap-8 pb-4 lg:grid-cols-[1fr_auto] lg:items-end">
-          <div>
-            <p className="text-sm uppercase tracking-[0.2em] text-primary/60">Next Step</p>
-            <h2 className="font-editorial mt-4 text-5xl leading-[0.96] text-foreground sm:text-6xl">
-              Start your project
-            </h2>
-            <p className="mt-5 max-w-3xl text-base leading-8 text-muted-foreground sm:text-lg">
-              Every community has unique strengths. Let's discover yours together.
-            </p>
-          </div>
-          <Button
-            onClick={() => navigate("/contact")}
-            className="rounded-full bg-primary px-7 text-primary-foreground hover:bg-primary/90"
-          >
-            Work With Us
-          </Button>
-        </section>
-      </div>
+          </FadeIn>
+          <FadeIn delay={0.04}>
+            <ActionButton action={{ label: "Work With Us", path: "/contact" }} navigate={navigate} tone="cream" />
+          </FadeIn>
+        </div>
+      </PageBand>
     </div>
   );
 }
@@ -867,55 +779,53 @@ export function ContactPage({ navigate }: { navigate: (path: string) => void }) 
   };
 
   return (
-    <div className="space-y-20 sm:space-y-24">
-      <PageIntro
+    <div>
+      <PageHero
         eyebrow={contactContent.hero.eyebrow}
         title={contactContent.hero.title}
         description={contactContent.hero.description}
         image={contactContent.hero.image}
       />
 
-      <div className="mx-auto max-w-[92rem] space-y-20 px-4 sm:px-6 lg:px-8 sm:space-y-24">
-        <section className="grid gap-10 lg:grid-cols-[0.75fr_1.25fr] lg:gap-16">
-          <div className="space-y-8">
-            <div>
-              <p className="text-sm uppercase tracking-[0.2em] text-primary/60">Get In Touch</p>
-              <h2 className="font-editorial mt-4 text-5xl leading-[0.96] text-foreground sm:text-6xl">
-                {contactContent.officeNote.title}
-              </h2>
-              <p className="mt-5 text-base leading-8 text-muted-foreground sm:text-lg">
-                {contactContent.officeNote.description}
-              </p>
-            </div>
-
-            <div className="divide-y divide-border/70 border-y border-border/70">
-              {contactContent.channels.map((channel) => (
-                <a
+      <PageBand tone="cream">
+        <div className="grid gap-10 lg:grid-cols-[0.82fr_1.18fr]">
+          <FadeIn>
+            <SectionLabel className="text-black/55">Get in Touch</SectionLabel>
+            <h2 className="site-title-lg mt-5">{contactContent.officeNote.title}</h2>
+            <p className="site-copy-md mt-6 max-w-2xl text-black/65">
+              {contactContent.officeNote.description}
+            </p>
+            <div className="mt-10 grid gap-3">
+              {contactContent.channels.map((channel, index) => (
+                <FadeIn
                   key={channel.title}
-                  href={channel.href}
-                  className="block py-5 transition hover:text-primary"
+                  delay={index * 0.03}
+                  className="rounded-[16px] border border-black/10 bg-white/45 px-5 py-5"
                 >
-                  <p className="text-sm uppercase tracking-[0.16em] text-primary/60">
-                    {channel.title}
-                  </p>
-                  <p className="font-editorial mt-2 text-3xl text-foreground sm:text-4xl">
-                    {channel.value}
-                  </p>
-                  <p className="mt-3 text-base leading-8 text-muted-foreground">
-                    {channel.note}
-                  </p>
-                </a>
+                  <a
+                    href={channel.href}
+                    target={isExternalLink(channel.href) ? "_blank" : undefined}
+                    rel={isExternalLink(channel.href) ? "noreferrer" : undefined}
+                    className="block"
+                  >
+                    <SectionLabel className="text-black/50">{channel.title}</SectionLabel>
+                    <p className="site-title-md mt-4">{channel.value}</p>
+                    <p className="site-copy-sm mt-4 text-black/60">{channel.note}</p>
+                  </a>
+                </FadeIn>
               ))}
             </div>
-          </div>
+          </FadeIn>
 
-          <div className="border-t border-foreground/10 pt-6">
-            <p className="text-sm uppercase tracking-[0.2em] text-primary/60">Inquiry Form</p>
-            <h3 className="font-editorial mt-4 text-4xl text-foreground sm:text-5xl">
-              Draft an email with your project details.
-            </h3>
-            <p className="mt-5 max-w-3xl text-base leading-8 text-muted-foreground sm:text-lg">
-              This form opens your mail app with the details prefilled. Update the email address in contact.json whenever you're ready.
+          <FadeIn
+            delay={0.05}
+            className="rounded-[16px] border border-black/10 bg-[var(--color-black)] p-6 text-white md:p-8"
+          >
+            <SectionLabel className="text-white/55">Inquiry Form</SectionLabel>
+            <h3 className="site-title-md mt-5">Draft an email with your project details.</h3>
+            <p className="site-copy-sm mt-5 max-w-2xl text-white/60">
+              This form opens your mail app with the details prefilled. Update the
+              email address in `contact.json` whenever you&apos;re ready.
             </p>
 
             <form className="mt-8 grid gap-4" onSubmit={handleSubmit}>
@@ -923,30 +833,30 @@ export function ContactPage({ navigate }: { navigate: (path: string) => void }) 
                 value={name}
                 onChange={(event) => setName(event.target.value)}
                 placeholder="Your name"
-                className="rounded-none border border-border bg-white px-4 py-3 outline-none transition focus:border-primary"
+                className="rounded-[16px] border border-white/10 bg-white/5 px-4 py-4 text-white outline-none placeholder:text-white/35 focus:border-white/30"
                 required
               />
               <input
                 value={organization}
                 onChange={(event) => setOrganization(event.target.value)}
                 placeholder="Organization"
-                className="rounded-none border border-border bg-white px-4 py-3 outline-none transition focus:border-primary"
+                className="rounded-[16px] border border-white/10 bg-white/5 px-4 py-4 text-white outline-none placeholder:text-white/35 focus:border-white/30"
               />
               <input
                 type="email"
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
                 placeholder="Email address"
-                className="rounded-none border border-border bg-white px-4 py-3 outline-none transition focus:border-primary"
+                className="rounded-[16px] border border-white/10 bg-white/5 px-4 py-4 text-white outline-none placeholder:text-white/35 focus:border-white/30"
                 required
               />
               <select
                 value={topic}
                 onChange={(event) => setTopic(event.target.value)}
-                className="rounded-none border border-border bg-white px-4 py-3 outline-none transition focus:border-primary"
+                className="rounded-[16px] border border-white/10 bg-white/5 px-4 py-4 text-white outline-none focus:border-white/30"
               >
                 {contactContent.consultationTopics.map((item) => (
-                  <option key={item} value={item}>
+                  <option key={item} value={item} className="text-black">
                     {item}
                   </option>
                 ))}
@@ -955,102 +865,101 @@ export function ContactPage({ navigate }: { navigate: (path: string) => void }) 
                 value={message}
                 onChange={(event) => setMessage(event.target.value)}
                 placeholder="Tell us about your project, timeline, or support needed."
-                className="min-h-40 rounded-none border border-border bg-white px-4 py-3 outline-none transition focus:border-primary"
+                className="min-h-40 rounded-[16px] border border-white/10 bg-white/5 px-4 py-4 text-white outline-none placeholder:text-white/35 focus:border-white/30"
                 required
               />
               <div className="flex flex-wrap gap-3">
-                <Button type="submit" className="rounded-full bg-primary px-6 text-primary-foreground hover:bg-primary/90">
-                  <Mail className="mr-2 h-4 w-4" />
+                <Button
+                  type="submit"
+                  className="site-label inline-flex items-center gap-2 rounded-[16px] border border-[var(--color-cream)] bg-[var(--color-cream)] px-5 py-4 text-[var(--color-black)] hover:bg-white"
+                >
+                  <Mail className="h-4 w-4" />
                   Draft Email
                 </Button>
                 <Button
                   type="button"
                   variant="outline"
-                  className="rounded-full border-primary/20 bg-white px-6 text-primary"
+                  className="site-label inline-flex items-center gap-2 rounded-[16px] border border-white/20 bg-transparent px-5 py-4 text-white hover:bg-white/10"
                   onClick={() => {
-                    const whatsappLink = contactContent.channels[1]?.href;
+                    const whatsappLink = contactContent.channels.find(
+                      (channel) => channel.title === "WhatsApp"
+                    )?.href;
 
                     if (whatsappLink) {
                       window.open(whatsappLink, "_blank", "noopener,noreferrer");
                     }
                   }}
                 >
-                  <MessageCircle className="mr-2 h-4 w-4" />
+                  <MessageCircle className="h-4 w-4" />
                   Open WhatsApp
                 </Button>
               </div>
             </form>
-          </div>
-        </section>
+          </FadeIn>
+        </div>
+      </PageBand>
 
-        <section className="grid gap-8 border-y border-border/70 py-12 lg:grid-cols-[0.72fr_1.28fr] lg:gap-16">
-          <p className="text-sm uppercase tracking-[0.2em] text-primary/60">Good Starting Points</p>
-          <div>
-            <h2 className="font-editorial text-5xl leading-[0.96] text-foreground sm:text-6xl">
-              Topics we can help you think through.
-            </h2>
-            <div className="mt-8 divide-y divide-border/70 border-y border-border/70">
-              {contactContent.consultationTopics.map((item) => (
-                <div key={item} className="py-4 text-base leading-8 text-foreground/78">
-                  {item}
-                </div>
-              ))}
-            </div>
+      <PageBand tone="grey">
+        <div className="grid gap-10 lg:grid-cols-[0.42fr_1.58fr]">
+          <FadeIn>
+            <SectionLabel className="text-white/55">Good Starting Points</SectionLabel>
+          </FadeIn>
+          <div className="grid gap-3">
+            {contactContent.consultationTopics.map((item, index) => (
+              <FadeIn
+                key={item}
+                delay={index * 0.03}
+                className="rounded-[16px] border border-white/10 bg-white/[0.04] px-5 py-5"
+              >
+                <p className="site-copy-sm text-white/68">{item}</p>
+              </FadeIn>
+            ))}
           </div>
-        </section>
+        </div>
+      </PageBand>
 
-        <section className="grid gap-8 pb-4 lg:grid-cols-[1fr_auto] lg:items-end">
-          <div>
-            <p className="text-sm uppercase tracking-[0.2em] text-primary/60">Next Step</p>
-            <h2 className="font-editorial mt-4 text-5xl leading-[0.96] text-foreground sm:text-6xl">
-              {contactContent.cta.title}
-            </h2>
-            <p className="mt-5 max-w-3xl text-base leading-8 text-muted-foreground sm:text-lg">
+      <PageBand tone="cream">
+        <div className="grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
+          <FadeIn>
+            <SectionLabel className="text-black/55">Next Step</SectionLabel>
+            <h2 className="site-title-lg mt-5">{contactContent.cta.title}</h2>
+            <p className="site-copy-md mt-6 max-w-3xl text-black/65">
               {contactContent.cta.description}
             </p>
-          </div>
-          <div className="flex flex-wrap gap-3">
-            <Button
-              onClick={() => navigate(contactContent.cta.primary.path ?? "/services")}
-              className="rounded-full bg-primary px-7 text-primary-foreground hover:bg-primary/90"
-            >
-              {contactContent.cta.primary.label}
-            </Button>
+          </FadeIn>
+          <FadeIn delay={0.04} className="flex flex-wrap gap-3">
+            <ActionButton action={contactContent.cta.primary} navigate={navigate} tone="cream" />
             {contactContent.cta.secondary ? (
-              <Button
-                onClick={() => navigate(contactContent.cta.secondary?.path ?? "/projects")}
-                variant="outline"
-                className="rounded-full border-primary/20 bg-white px-7 text-primary"
-              >
-                {contactContent.cta.secondary.label}
-              </Button>
+              <ActionButton
+                action={contactContent.cta.secondary}
+                navigate={navigate}
+                tone="cream"
+                secondary
+              />
             ) : null}
-          </div>
-        </section>
-      </div>
+          </FadeIn>
+        </div>
+      </PageBand>
     </div>
   );
 }
 
 export function NotFoundPage({ navigate }: { navigate: (path: string) => void }) {
   return (
-    <section className="rounded-[2.25rem] border border-border/60 bg-white/80 p-10 text-center shadow-[0_24px_80px_rgba(35,42,31,0.12)]">
-      <p className="text-sm uppercase tracking-[0.18em] text-primary/60">
-        Page not found
-      </p>
-      <h1 className="mt-3 text-4xl font-semibold text-foreground">
-        This route does not have content yet.
-      </h1>
-      <p className="mx-auto mt-4 max-w-2xl text-base leading-8 text-muted-foreground">
-        The site is reading from page-specific JSON files. If you add another page
-        later, we can wire another route to it just as cleanly.
-      </p>
-      <Button
-        onClick={() => navigate("/")}
-        className="mt-8 rounded-full bg-primary px-6 text-primary-foreground hover:bg-primary/90"
-      >
-        Return Home
-      </Button>
-    </section>
+    <PageBand tone="dark">
+      <div className="grid gap-10 rounded-[16px] border border-white/10 bg-white/[0.04] p-8 md:p-10">
+        <FadeIn>
+          <SectionLabel className="text-white/55">Page not found</SectionLabel>
+          <h1 className="site-title-lg mt-5">This route does not have content yet.</h1>
+          <p className="site-copy-md mt-6 max-w-2xl text-white/65">
+            The site is reading from page-specific JSON files. If you add another
+            page later, we can wire another route to it just as cleanly.
+          </p>
+        </FadeIn>
+        <FadeIn delay={0.04}>
+          <ActionButton action={{ label: "Return Home", path: "/" }} navigate={navigate} />
+        </FadeIn>
+      </div>
+    </PageBand>
   );
 }
