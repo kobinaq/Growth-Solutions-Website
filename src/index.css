@@ -5,10 +5,10 @@
 :root {
   --size: 1600;
   --color-black: #0b1012;
-  --color-white: #fff;
-  --color-cream: #f3f0ec;
-  --color-taupe: #d4cec6;
-  --color-grey: #212325;
+  --color-white: #ffffff;
+  --color-cream: #0f6a43;
+  --color-taupe: #7db79a;
+  --color-grey: #ffffff;
   --ease-in-out-quart: cubic-bezier(.77, 0, .175, 1);
   --ease-in-out-cubic: cubic-bezier(.645, .045, .355, 1);
   --ease-in-out-quad: cubic-bezier(.455, .03, .515, .955);
@@ -21,25 +21,25 @@
   --font-f-aeonik-pro: "Aeonik Pro";
   --un-bg-opacity: 1;
   --un-text-opacity: 1;
-  --background: 200 24% 6%;
-  --foreground: 0 0% 100%;
-  --card: 200 11% 14%;
-  --card-foreground: 0 0% 100%;
-  --popover: 200 24% 6%;
-  --popover-foreground: 0 0% 100%;
-  --primary: 0 0% 100%;
-  --primary-foreground: 200 24% 6%;
-  --secondary: 34 23% 94%;
-  --secondary-foreground: 200 24% 6%;
-  --muted: 210 6% 18%;
-  --muted-foreground: 0 0% 100%;
-  --accent: 34 23% 94%;
-  --accent-foreground: 200 24% 6%;
+  --background: 0 0% 100%;
+  --foreground: 200 24% 6%;
+  --card: 0 0% 100%;
+  --card-foreground: 200 24% 6%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 200 24% 6%;
+  --primary: 151 75% 24%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 151 75% 24%;
+  --secondary-foreground: 0 0% 100%;
+  --muted: 151 34% 38%;
+  --muted-foreground: 200 24% 6%;
+  --accent: 151 75% 24%;
+  --accent-foreground: 0 0% 100%;
   --destructive: 0 84% 60%;
   --destructive-foreground: 0 0% 100%;
-  --border: 210 8% 24%;
-  --input: 210 8% 24%;
-  --ring: 34 23% 94%;
+  --border: 210 8% 82%;
+  --input: 210 8% 82%;
+  --ring: 151 75% 24%;
   --radius: 16px;
 }
 
@@ -55,8 +55,8 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  background: var(--color-black);
-  color: var(--color-white);
+  background: var(--color-grey);
+  color: rgb(11 16 18);
   font-family: var(--font-f-aeonik-pro), "Montserrat", "Segoe UI", Arial, sans-serif;
   text-rendering: optimizeLegibility;
 }
@@ -94,8 +94,8 @@ img {
 }
 
 ::selection {
-  background: rgba(255, 255, 255, 0.2);
-  color: var(--color-white);
+  background: rgba(15, 106, 67, 0.18);
+  color: rgb(11 16 18);
 }
 
 .font-pro {
@@ -117,21 +117,21 @@ img {
 
 .site-title-xl {
   font-size: clamp(3rem, 5vw, 5.1rem);
-  font-weight: 400;
+  font-weight: 900;
   letter-spacing: -1.536px;
   line-height: 0.98;
 }
 
 .site-title-lg {
   font-size: clamp(2.25rem, 3.8vw, 3.2rem);
-  font-weight: 400;
+  font-weight: 900;
   letter-spacing: -0.96px;
   line-height: 1;
 }
 
 .site-title-md {
   font-size: clamp(1.8rem, 3vw, 2rem);
-  font-weight: 400;
+  font-weight: 900;
   letter-spacing: -0.64px;
   line-height: 1;
 }

@@ -35,7 +35,7 @@ export function SiteHeader({
   onToggleMenu: () => void;
 }) {
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[color:rgb(11_16_18_/_0.8)] text-white backdrop-blur-[16px]">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-black/10 bg-[color:rgb(255_255_255_/_0.86)] text-[var(--color-black)] backdrop-blur-[16px]">
       <div className="site-shell">
         <div className="grid grid-cols-[auto_1fr_auto] items-center gap-4 py-4">
           <button
@@ -65,7 +65,7 @@ export function SiteHeader({
           <button
             type="button"
             onClick={onToggleMenu}
-            className="ml-auto inline-flex h-10 w-10 items-center justify-center rounded-[16px] border border-white/10 bg-white/5 text-white lg:hidden"
+            className="ml-auto inline-flex h-10 w-10 items-center justify-center rounded-[16px] border border-black/10 bg-black/5 text-[var(--color-black)] lg:hidden"
             aria-label="Toggle menu"
           >
             {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -74,7 +74,7 @@ export function SiteHeader({
       </div>
 
       {isMenuOpen ? (
-        <div className="border-t border-white/10 lg:hidden">
+        <div className="border-t border-black/10 lg:hidden">
           <div className="site-shell py-3">
             <nav className="grid gap-1">
               {navLinks.map((link) => (
@@ -112,9 +112,9 @@ function HeaderLink({
       href={link.path ?? link.href ?? "#"}
       onClick={(event) => handleLinkClick(event, link, onNavigate)}
       className={cn(
-        "site-label text-white/60",
-        active ? "text-white" : "hover:text-white",
-        stacked ? "rounded-[16px] border border-white/10 px-4 py-3" : "px-0 py-1"
+        "site-label text-black/55",
+        active ? "text-[var(--color-black)]" : "hover:text-[var(--color-black)]",
+        stacked ? "rounded-[16px] border border-black/10 px-4 py-3" : "px-0 py-1"
       )}
     >
       {link.label}
@@ -130,7 +130,7 @@ export function SiteFooter({
   navigate: (path: string) => void;
 }) {
   return (
-    <footer className="border-t border-white/10 bg-[var(--color-black)] text-white">
+    <footer className="border-t border-white/10 bg-[#212325] text-white">
       <div className="site-shell py-16">
         <div className="grid gap-12 lg:grid-cols-[1.2fr_0.8fr_0.8fr]">
           <div className="max-w-xl">
@@ -202,10 +202,10 @@ export function PageBand({
 }) {
   const toneClass =
     tone === "cream"
-      ? "bg-[var(--color-cream)] text-[var(--color-black)]"
+      ? "bg-[var(--color-cream)] text-white"
       : tone === "grey"
-        ? "bg-[var(--color-grey)] text-white"
-        : "bg-[var(--color-black)] text-white";
+        ? "bg-[var(--color-grey)] text-[var(--color-black)]"
+        : "bg-[var(--color-grey)] text-[var(--color-black)]";
 
   return (
     <section className={cn("flex w-full", toneClass, className)}>
@@ -258,7 +258,7 @@ export function ImagePanel({
   return (
     <div
       className={cn(
-        "overflow-hidden rounded-[16px] border border-white/10 bg-white/5",
+        "overflow-hidden rounded-[16px] border border-black/10 bg-black/[0.03]",
         className
       )}
     >
