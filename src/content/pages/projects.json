@@ -70,13 +70,6 @@
           }
         },
         {
-          "title": "Supported the establishment and coordination of other national clean cooking alliances in West Africa.",
-          "image": {
-            "src": "/projects/agroforestry-1.jpg",
-            "alt": "Supported the establishment and coordination of other national clean cooking alliances in West Africa."
-          }
-        },
-        {
           "title": "Served as a Task Team member in developing Ghana’s national clean cooking framework and roadmap.",
           "image": {
             "src": "/projects/project1-1.jpeg",
@@ -107,7 +100,7 @@
           "title": "Developed and implemented Social Public Expenditure & Financial Accountability (SPEFA) in 46 Assemblies",
           "description": "Enhanced citizen participation and CSO capacity in local government financial accountability.",
           "image": {
-            "src": "/projects/project1-2.jpg",
+            "src": "/projects/SPEFA_project.png",
             "alt": "Developed and implemented Social Public Expenditure & Financial Accountability (SPEFA) in 46 Assemblies"
           },
           "stats": [
@@ -121,7 +114,7 @@
           "title": "Community Monitoring of Ghana School Feeding Programme (Civil Society)",
           "description": "Led independent CSO monitoring initiative to improve transparency and accountability in GSFP.",
           "image": {
-            "src": "/projects/ghana-school-feeding-assessment-2.jpg",
+            "src": "/projects/sch_feeding_monitoring_project.png",
             "alt": "Community Monitoring of Ghana School Feeding Programme (Civil Society)"
           }
         }
@@ -134,7 +127,7 @@
           "title": "Provided Organisational Development for Women in STEM Leadership (cross-listed) under the SISTARS Project",
           "description": "Enhanced institutional inclusion and leadership development for women in STEM.",
           "image": {
-            "src": "/projects/project1-1.jpg",
+            "src": "/projects/women_in_stem_project.png",
             "alt": "Provided Organisational Development for Women in STEM Leadership (cross-listed) under the SISTARS Project"
           }
         },
@@ -142,7 +135,7 @@
           "title": "Anti-Child Labour & Trafficking Community Messaging",
           "description": "Developed district-specific awareness toolkits to combat child labour and trafficking.",
           "image": {
-            "src": "/projects/project1-2.jpeg",
+            "src": "/projects/anti_child_labor_project.png",
             "alt": "Anti-Child Labour & Trafficking Community Messaging"
           }
         }
@@ -170,7 +163,7 @@
           "title": "Contributed to a National Climate Change Adaptation Strategy.",
           "description": "Contributed to Ghana’s adaptation framework and district-level integration.",
           "image": {
-            "src": "/projects/project1-1.jpeg",
+            "src": "/projects/NATIONAL_MANUAL_&_CLIMATE_ADAPTATION_project.png",
             "alt": "Contributed to a National Climate Change Adaptation Strategy."
           }
         },
