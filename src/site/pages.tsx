@@ -457,7 +457,8 @@ export function AboutPage({ navigate }: { navigate: (path: string) => void }) {
             >
               <ImagePanel
                 image={member.image}
-                className="h-[320px] border-white/15 bg-white/10 md:h-[420px]"
+                className="group aspect-square w-full border-white/15 bg-white/8"
+                imgClassName="object-cover object-[center_18%] grayscale transition duration-500 ease-out group-hover:grayscale-0"
               />
               <div>
                 <SectionLabel className="text-white/70">{member.role}</SectionLabel>
@@ -928,47 +929,6 @@ export function ContactPage({ navigate }: { navigate: (path: string) => void }) 
         </div>
       </PageBand>
 
-      <PageBand tone="grey">
-        <div className="grid gap-10 lg:grid-cols-[0.42fr_1.58fr]">
-          <FadeIn>
-            <SectionLabel className="text-black/55">Good Starting Points</SectionLabel>
-          </FadeIn>
-          <div className="grid gap-3">
-            {contactContent.consultationTopics.map((item, index) => (
-              <FadeIn
-                key={item}
-                delay={index * 0.03}
-                className="rounded-[16px] border border-black/10 bg-black/[0.03] px-5 py-5"
-              >
-                <p className="site-copy-sm text-black/68">{item}</p>
-              </FadeIn>
-            ))}
-          </div>
-        </div>
-      </PageBand>
-
-      <PageBand tone="cream">
-        <div className="grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
-          <FadeIn>
-            <SectionLabel className="text-white/70">Next Step</SectionLabel>
-            <h2 className="site-title-lg mt-5">{contactContent.cta.title}</h2>
-            <p className="site-copy-md mt-6 max-w-3xl text-white/72">
-              {contactContent.cta.description}
-            </p>
-          </FadeIn>
-          <FadeIn delay={0.04} className="flex flex-wrap gap-3">
-            <ActionButton action={contactContent.cta.primary} navigate={navigate} tone="cream" />
-            {contactContent.cta.secondary ? (
-              <ActionButton
-                action={contactContent.cta.secondary}
-                navigate={navigate}
-                tone="cream"
-                secondary
-              />
-            ) : null}
-          </FadeIn>
-        </div>
-      </PageBand>
     </div>
   );
 }

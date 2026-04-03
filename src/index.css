@@ -117,21 +117,21 @@ img {
 
 .site-title-xl {
   font-size: clamp(3rem, 5vw, 5.1rem);
-  font-weight: 900;
+  font-weight: 820;
   letter-spacing: -1.536px;
   line-height: 0.98;
 }
 
 .site-title-lg {
   font-size: clamp(2.25rem, 3.8vw, 3.2rem);
-  font-weight: 900;
+  font-weight: 760;
   letter-spacing: -0.96px;
   line-height: 1;
 }
 
 .site-title-md {
   font-size: clamp(1.8rem, 3vw, 2rem);
-  font-weight: 900;
+  font-weight: 760;
   letter-spacing: -0.64px;
   line-height: 1;
 }

@@ -205,13 +205,19 @@ export function PageBand({
 }) {
   const toneClass =
     tone === "cream"
-      ? "bg-[var(--color-cream)] text-white"
+      ? "relative isolate overflow-hidden bg-[linear-gradient(180deg,#18734d_0%,#0f6a43_52%,#0b5d3a_100%)] text-white"
       : tone === "grey"
         ? "bg-[var(--color-grey)] text-[var(--color-black)]"
         : "bg-[var(--color-grey)] text-[var(--color-black)]";
 
   return (
     <section className={cn("flex w-full", toneClass, className)}>
+      {tone === "cream" ? (
+        <>
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.12),transparent_36%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(255,255,255,0.08),transparent_32%)]" />
+        </>
+      ) : null}
       <div className={cn("site-shell w-full py-16 md:py-20 lg:py-24", innerClassName)}>
         {children}
       </div>
@@ -254,9 +260,11 @@ export function SectionLabel({
 export function ImagePanel({
   image,
   className,
+  imgClassName,
 }: {
   image: ImageAsset;
   className?: string;
+  imgClassName?: string;
 }) {
   return (
     <div
@@ -265,7 +273,11 @@ export function ImagePanel({
         className
       )}
     >
-      <img src={image.src} alt={image.alt} className="h-full w-full object-cover" />
+      <img
+        src={image.src}
+        alt={image.alt}
+        className={cn("h-full w-full object-cover", imgClassName)}
+      />
     </div>
   );
 }
