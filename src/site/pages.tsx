@@ -47,7 +47,7 @@ function ActionButton({
         : "border border-[var(--color-cream)] bg-[var(--color-cream)] text-white hover:opacity-90"
       : secondary
         ? "border border-white/20 bg-transparent text-white hover:bg-white/10"
-        : "border border-white bg-white text-[var(--color-cream)] hover:opacity-90",
+        : "border border-white bg-white text-[var(--color-cream)] hover:border-[var(--color-cream)] hover:bg-[var(--color-cream)] hover:text-white",
     className
   );
 
@@ -905,7 +905,7 @@ export function ContactPage({ navigate }: { navigate: (path: string) => void }) 
               <div className="flex flex-wrap gap-3">
                 <Button
                   type="submit"
-                  className="site-label inline-flex items-center gap-2 rounded-[16px] border border-white bg-white px-5 py-4 text-[var(--color-cream)] hover:opacity-90"
+                  className="site-label inline-flex items-center gap-2 rounded-[16px] border border-white bg-white px-5 py-4 text-[var(--color-cream)] hover:border-[var(--color-cream)] hover:bg-[var(--color-cream)] hover:text-white"
                 >
                   <Mail className="h-4 w-4" />
                   Draft Email

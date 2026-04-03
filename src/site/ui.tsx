@@ -214,11 +214,11 @@ export function PageBand({
     <section className={cn("flex w-full", toneClass, className)}>
       {tone === "cream" ? (
         <>
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.12),transparent_36%)]" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(255,255,255,0.08),transparent_32%)]" />
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.12),transparent_36%)]" />
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(255,255,255,0.08),transparent_32%)]" />
         </>
       ) : null}
-      <div className={cn("site-shell w-full py-16 md:py-20 lg:py-24", innerClassName)}>
+      <div className={cn("site-shell relative z-10 w-full py-16 md:py-20 lg:py-24", innerClassName)}>
         {children}
       </div>
     </section>
