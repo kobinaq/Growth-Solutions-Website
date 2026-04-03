@@ -82,28 +82,24 @@
     "intro": "Our focus areas reflect the systems communities must strengthen to build sustainable futures.",
     "items": [
       {
-        "title": "Organizational Development",
-        "description": "Strengthening the capacity, leadership, and systems of community organizations to improve effectiveness, accountability, and long-term sustainability."
-      },
-      {
-        "title": "Energy and Green Transition",
-        "description": "Advancing access to clean, affordable, and renewable energy solutions while supporting communities to adapt to a low-carbon future."
-      },
-      {
-        "title": "Governance",
-        "description": "Promoting transparent, participatory, and inclusive governance structures that empower communities to make informed decisions and manage local resources responsibly."
-      },
-      {
-        "title": "Livelihood and Local Enterprise",
-        "description": "Supporting communities to identify their comparative advantages, strengthen local enterprise, and create economic opportunities rooted in available resources and practical market pathways."
+        "title": "Environment",
+        "description": "Supporting sustainable management of natural resources, biodiversity conservation, and climate resilience through community-led environmental stewardship."
       },
       {
         "title": "Gender and Social Inclusion",
         "description": "Mainstreaming gender equity and social inclusion across all programs to ensure equal opportunities, representation, and outcomes for marginalized groups."
       },
       {
-        "title": "Environment",
-        "description": "Supporting sustainable management of natural resources, biodiversity conservation, and climate resilience through community-led environmental stewardship."
+        "title": "Governance",
+        "description": "Promoting transparent, participatory, and inclusive governance structures that empower communities to make informed decisions and manage local resources responsibly."
+      },
+      {
+        "title": "Energy and Green Transition",
+        "description": "Advancing access to clean, affordable, and renewable energy solutions while supporting communities to adapt to a low-carbon future."
+      },
+      {
+        "title": "Organisational Development",
+        "description": "Strengthening the capacity, leadership, and systems of community organizations to improve effectiveness, accountability, and long-term sustainability."
       }
     ]
   },

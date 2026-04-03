@@ -10,6 +10,124 @@
   },
   "categories": [
     {
+      "title": "Environment",
+      "projects": [
+        {
+          "title": "Set up Water & Sanitation Social Enterprise.",
+          "description": "Established local social enterprise for community-managed WASH services.",
+          "image": {
+            "src": "/projects/water_sanitation_project.png",
+            "alt": "Set up Water & Sanitation Social Enterprise."
+          }
+        },
+        {
+          "title": "Supported in developing a National Green Economy Manual & Handbook",
+          "image": {
+            "src": "/projects/Green_economy_project.png",
+            "alt": "Supported in developing a National Green Economy Manual & Handbook"
+          }
+        },
+        {
+          "title": "Contributed to a National Climate Change Adaptation Strategy.",
+          "description": "Contributed to Ghana’s adaptation framework and district-level integration.",
+          "image": {
+            "src": "/projects/NATIONAL_MANUAL_&_CLIMATE_ADAPTATION_project.png",
+            "alt": "Contributed to a National Climate Change Adaptation Strategy."
+          }
+        },
+        {
+          "title": "Supported in Boosting Green Employment and Enterprise Opportunities (GrEEn)",
+          "description": "Promoted green jobs and MSME growth in energy and environmental sectors.",
+          "image": {
+            "src": "/projects/Green_SMEs.png",
+            "alt": "Supported in Boosting Green Employment and Enterprise Opportunities (GrEEn)"
+          }
+        }
+      ]
+    },
+    {
+      "title": "Gender and Social Inclusion",
+      "projects": [
+        {
+          "title": "Provided Organisational Development for Women in STEM Leadership (cross-listed) under the SISTARS Project",
+          "description": "Enhanced institutional inclusion and leadership development for women in STEM.",
+          "image": {
+            "src": "/projects/women_in_stem_project.png",
+            "alt": "Provided Organisational Development for Women in STEM Leadership (cross-listed) under the SISTARS Project"
+          }
+        },
+        {
+          "title": "Anti-Child Labour & Trafficking Community Messaging",
+          "description": "Developed district-specific awareness toolkits to combat child labour and trafficking.",
+          "image": {
+            "src": "/projects/anti_child_labor_project.png",
+            "alt": "Anti-Child Labour & Trafficking Community Messaging"
+          }
+        }
+      ]
+    },
+    {
+      "title": "Governance",
+      "projects": [
+        {
+          "title": "Developed and implemented Social Public Expenditure & Financial Accountability (SPEFA) in 46 Assemblies",
+          "description": "Enhanced citizen participation and CSO capacity in local government financial accountability.",
+          "image": {
+            "src": "/projects/SPEFA_project.png",
+            "alt": "Developed and implemented Social Public Expenditure & Financial Accountability (SPEFA) in 46 Assemblies"
+          },
+          "stats": [
+            {
+              "value": "46",
+              "label": "Assemblies"
+            }
+          ]
+        },
+        {
+          "title": "Community Monitoring of Ghana School Feeding Programme (Civil Society)",
+          "description": "Led independent CSO monitoring initiative to improve transparency and accountability in GSFP.",
+          "image": {
+            "src": "/projects/sch_feeding_monitoring_project.png",
+            "alt": "Community Monitoring of Ghana School Feeding Programme (Civil Society)"
+          }
+        }
+      ]
+    },
+    {
+      "title": "Energy and Green Transition",
+      "projects": [
+        {
+          "title": "Contributed in setting up the Ghana Alliance for Clean Cooking and supporting in setting up strong Organisational Development systems.",
+          "image": {
+            "src": "/projects/clean-cooking-alliance.png",
+            "alt": "Contributed in setting up the Ghana Alliance for Clean Cooking and supporting in setting up strong Organisational Development systems."
+          }
+        },
+        {
+          "title": "Served as a Task Team member in developing Ghana’s national clean cooking framework and roadmap.",
+          "image": {
+            "src": "/projects/Clean_cooking_roadmap_project.png",
+            "alt": "Served as a Task Team member in developing Ghana’s national clean cooking framework and roadmap."
+          }
+        },
+        {
+          "title": "Supported in Clean Cookstoves Education & Curriculum Integration.",
+          "description": "Introduced clean cooking content into school curricula and community programs.",
+          "image": {
+            "src": "/projects/clean_cooking_education.png",
+            "alt": "Supported in Clean Cookstoves Education & Curriculum Integration."
+          }
+        },
+        {
+          "title": "Developed and implemented monitoring systems for energy performance and emissions reduction.",
+          "image": {
+            "src": "/projects/Energy_monitoring_system.png",
+            "alt": "Developed and implemented monitoring systems for energy performance and emissions reduction."
+          }
+        }
+      ]
+    },
+    {
       "title": "Organisational Development",
       "projects": [
         {
@@ -55,124 +173,6 @@
           "image": {
             "src": "/projects/GPRS_project.png",
             "alt": "Provide Technical support in the Preparation of a Medium-Term Development Plan based on the Ghana Poverty Reduction Strategy (GPRS)."
-          }
-        }
-      ]
-    },
-    {
-      "title": "Energy and Green Transition",
-      "projects": [
-        {
-          "title": "Contributed in setting up the Ghana Alliance for Clean Cooking and supporting in setting up strong Organisational Development systems.",
-          "image": {
-            "src": "/projects/clean-cooking-alliance.png",
-            "alt": "Contributed in setting up the Ghana Alliance for Clean Cooking and supporting in setting up strong Organisational Development systems."
-          }
-        },
-        {
-          "title": "Served as a Task Team member in developing Ghana’s national clean cooking framework and roadmap.",
-          "image": {
-            "src": "/projects/Clean_cooking_roadmap_project.png",
-            "alt": "Served as a Task Team member in developing Ghana’s national clean cooking framework and roadmap."
-          }
-        },
-        {
-          "title": "Supported in Clean Cookstoves Education & Curriculum Integration.",
-          "description": "Introduced clean cooking content into school curricula and community programs.",
-          "image": {
-            "src": "/projects/clean_cooking_education.png",
-            "alt": "Supported in Clean Cookstoves Education & Curriculum Integration."
-          }
-        },
-        {
-          "title": "Developed and implemented monitoring systems for energy performance and emissions reduction.",
-          "image": {
-            "src": "/projects/Energy_monitoring_system.png",
-            "alt": "Developed and implemented monitoring systems for energy performance and emissions reduction."
-          }
-        }
-      ]
-    },
-    {
-      "title": "Governance",
-      "projects": [
-        {
-          "title": "Developed and implemented Social Public Expenditure & Financial Accountability (SPEFA) in 46 Assemblies",
-          "description": "Enhanced citizen participation and CSO capacity in local government financial accountability.",
-          "image": {
-            "src": "/projects/SPEFA_project.png",
-            "alt": "Developed and implemented Social Public Expenditure & Financial Accountability (SPEFA) in 46 Assemblies"
-          },
-          "stats": [
-            {
-              "value": "46",
-              "label": "Assemblies"
-            }
-          ]
-        },
-        {
-          "title": "Community Monitoring of Ghana School Feeding Programme (Civil Society)",
-          "description": "Led independent CSO monitoring initiative to improve transparency and accountability in GSFP.",
-          "image": {
-            "src": "/projects/sch_feeding_monitoring_project.png",
-            "alt": "Community Monitoring of Ghana School Feeding Programme (Civil Society)"
-          }
-        }
-      ]
-    },
-    {
-      "title": "Gender and Social Inclusion",
-      "projects": [
-        {
-          "title": "Provided Organisational Development for Women in STEM Leadership (cross-listed) under the SISTARS Project",
-          "description": "Enhanced institutional inclusion and leadership development for women in STEM.",
-          "image": {
-            "src": "/projects/women_in_stem_project.png",
-            "alt": "Provided Organisational Development for Women in STEM Leadership (cross-listed) under the SISTARS Project"
-          }
-        },
-        {
-          "title": "Anti-Child Labour & Trafficking Community Messaging",
-          "description": "Developed district-specific awareness toolkits to combat child labour and trafficking.",
-          "image": {
-            "src": "/projects/anti_child_labor_project.png",
-            "alt": "Anti-Child Labour & Trafficking Community Messaging"
-          }
-        }
-      ]
-    },
-    {
-      "title": "Environment",
-      "projects": [
-        {
-          "title": "Set up Water & Sanitation Social Enterprise.",
-          "description": "Established local social enterprise for community-managed WASH services.",
-          "image": {
-            "src": "/projects/water_sanitation_project.png",
-            "alt": "Set up Water & Sanitation Social Enterprise."
-          }
-        },
-        {
-          "title": "Supported in developing a National Green Economy Manual & Handbook",
-          "image": {
-            "src": "/projects/Green_economy_project.png",
-            "alt": "Supported in developing a National Green Economy Manual & Handbook"
-          }
-        },
-        {
-          "title": "Contributed to a National Climate Change Adaptation Strategy.",
-          "description": "Contributed to Ghana’s adaptation framework and district-level integration.",
-          "image": {
-            "src": "/projects/NATIONAL_MANUAL_&_CLIMATE_ADAPTATION_project.png",
-            "alt": "Contributed to a National Climate Change Adaptation Strategy."
-          }
-        },
-        {
-          "title": "Supported in Boosting Green Employment and Enterprise Opportunities (GrEEn)",
-          "description": "Promoted green jobs and MSME growth in energy and environmental sectors.",
-          "image": {
-            "src": "/projects/Green_SMEs.png",
-            "alt": "Supported in Boosting Green Employment and Enterprise Opportunities (GrEEn)"
           }
         }
       ]

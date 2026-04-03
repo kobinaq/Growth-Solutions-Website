@@ -234,7 +234,7 @@ export function HomePage({ navigate }: { navigate: (path: string) => void }) {
       </PageHero>
 
       <PageBand tone="cream">
-        <div className="grid gap-10 lg:grid-cols-[0.38fr_1.62fr]">
+        <div className="grid items-start gap-10 lg:grid-cols-[0.52fr_1.48fr]">
           <FadeIn>
             <SectionLabel className="text-white/70">{homeContent.partners.title}</SectionLabel>
           </FadeIn>
@@ -254,7 +254,7 @@ export function HomePage({ navigate }: { navigate: (path: string) => void }) {
       </PageBand>
 
       <PageBand tone="dark">
-        <div className="grid gap-10 lg:grid-cols-[0.42fr_1.58fr]">
+        <div className="grid items-start gap-10 lg:grid-cols-[0.55fr_1.45fr]">
           <FadeIn>
             <SectionLabel className="text-black/55">{homeContent.manifesto.eyebrow}</SectionLabel>
           </FadeIn>
@@ -272,12 +272,12 @@ export function HomePage({ navigate }: { navigate: (path: string) => void }) {
       </PageBand>
 
       <PageBand tone="cream">
-        <div className="grid gap-10 lg:grid-cols-[0.42fr_1.58fr]">
+        <div className="grid items-start gap-10 lg:grid-cols-[0.72fr_1.28fr]">
           <FadeIn>
             <SectionLabel className="text-white/70">Process</SectionLabel>
             <h2 className="site-title-lg mt-5">{homeContent.process.title}</h2>
           </FadeIn>
-          <div className="grid gap-4">
+          <div className="grid content-start gap-4">
             {homeContent.process.steps.map((step, index) => (
               <FadeIn
                 key={step.title}
@@ -298,7 +298,7 @@ export function HomePage({ navigate }: { navigate: (path: string) => void }) {
       </PageBand>
 
       <PageBand tone="grey">
-        <div className="grid gap-10 lg:grid-cols-[0.42fr_1.58fr]">
+        <div className="grid items-start gap-10 lg:grid-cols-[0.76fr_1.24fr]">
           <FadeIn>
             <SectionLabel className="text-black/55">Focus Areas</SectionLabel>
             <h2 className="site-title-lg mt-5">{homeContent.focusAreas.title}</h2>
@@ -306,12 +306,12 @@ export function HomePage({ navigate }: { navigate: (path: string) => void }) {
               {homeContent.focusAreas.intro}
             </p>
           </FadeIn>
-          <div className="grid gap-3">
+          <div className="grid content-start gap-3">
             {homeContent.focusAreas.items.map((item, index) => (
               <FadeIn
                 key={item.title}
                 delay={index * 0.04}
-                className="grid gap-4 rounded-[16px] border border-black/10 bg-black/[0.03] p-6 md:grid-cols-[0.75fr_1.25fr]"
+                className="grid gap-4 rounded-[16px] border border-black/10 bg-black/[0.03] p-6 md:grid-cols-[0.9fr_1.1fr]"
               >
                 <h3 className="site-title-md">{item.title}</h3>
                 <p className="site-copy-sm text-black/65">{item.description}</p>
@@ -413,7 +413,7 @@ export function AboutPage({ navigate }: { navigate: (path: string) => void }) {
       </PageBand>
 
       <PageBand tone="grey">
-        <div className="grid gap-12 lg:grid-cols-[0.92fr_1.08fr]">
+        <div className="grid items-start gap-12 lg:grid-cols-[1fr_1fr]">
           <FadeIn>
             <SectionLabel className="text-black/55">{aboutContent.approach.title}</SectionLabel>
             <h2 className="site-title-lg mt-5">{aboutContent.hero.title}</h2>
@@ -421,7 +421,7 @@ export function AboutPage({ navigate }: { navigate: (path: string) => void }) {
               {aboutContent.approach.description}
             </p>
           </FadeIn>
-          <div className="grid gap-3">
+          <div className="grid content-start gap-3">
             <FadeIn delay={0.05}>
               <SectionLabel className="text-black/55">{aboutContent.guidingPrinciples.title}</SectionLabel>
             </FadeIn>
@@ -471,7 +471,7 @@ export function AboutPage({ navigate }: { navigate: (path: string) => void }) {
       </PageBand>
 
       <PageBand tone="dark">
-        <div className="grid gap-10 lg:grid-cols-[0.35fr_1.65fr]">
+        <div className="grid items-start gap-10 lg:grid-cols-[0.5fr_1.5fr]">
           <FadeIn>
             <SectionLabel className="text-black/55">Partners</SectionLabel>
           </FadeIn>
@@ -491,12 +491,12 @@ export function AboutPage({ navigate }: { navigate: (path: string) => void }) {
       </PageBand>
 
       <PageBand tone="grey">
-        <div className="grid gap-10 lg:grid-cols-[0.42fr_1.58fr]">
+        <div className="grid items-start gap-10 lg:grid-cols-[0.78fr_1.22fr]">
           <FadeIn>
             <SectionLabel className="text-black/55">{aboutContent.clients.title}</SectionLabel>
             <h2 className="site-title-lg mt-5 max-w-4xl">{aboutContent.clients.description}</h2>
           </FadeIn>
-          <div className="grid gap-3">
+          <div className="grid content-start gap-3">
             {aboutContent.clients.items.map((item, index) => (
               <FadeIn
                 key={item}
@@ -550,7 +550,7 @@ export function ServicesPage({ navigate }: { navigate: (path: string) => void })
       />
 
       <PageBand tone="cream">
-        <div className="grid gap-10 lg:grid-cols-[0.42fr_1.58fr]">
+        <div className="grid items-start gap-10 lg:grid-cols-[0.55fr_1.45fr]">
           <FadeIn>
             <SectionLabel className="text-white/70">{servicesContent.sectionIntro.eyebrow}</SectionLabel>
           </FadeIn>
@@ -574,13 +574,13 @@ export function ServicesPage({ navigate }: { navigate: (path: string) => void })
 
         return (
           <PageBand key={service.title} tone={tone}>
-            <div className="grid gap-10 lg:grid-cols-[0.92fr_1.08fr]">
+            <div className="grid items-start gap-10 lg:grid-cols-[1fr_1fr]">
               <FadeIn>
                 <SectionLabel className={labelColor}>{service.title}</SectionLabel>
                 <h2 className="site-title-lg mt-5 max-w-3xl">{service.summary}</h2>
                 <p className={cn("site-copy-sm mt-6", labelColor)}>{service.cta}</p>
               </FadeIn>
-              <div className="grid gap-5">
+              <div className="grid content-start gap-5">
                 <FadeIn delay={0.04} className="space-y-5">
                   {service.description.map((paragraph) => (
                     <p key={paragraph} className={cn("site-copy-md", bodyColor)}>
@@ -822,7 +822,7 @@ export function ContactPage({ navigate }: { navigate: (path: string) => void }) 
       />
 
       <PageBand tone="cream">
-        <div className="grid gap-10 lg:grid-cols-[0.82fr_1.18fr]">
+        <div className="grid items-start gap-10 lg:grid-cols-[1fr_1.08fr]">
           <FadeIn>
             <SectionLabel className="text-white/70">Get in Touch</SectionLabel>
             <h2 className="site-title-lg mt-5">{contactContent.officeNote.title}</h2>
