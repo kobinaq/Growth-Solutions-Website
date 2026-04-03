@@ -26,23 +26,30 @@
     }
   ],
   "footer": {
-    "copyright": "© 2024 All rights reserved.",
-    "links": [
+    "copyright": "© 2026 Growth Solutions. All rights reserved.",
+    "contactLinks": [
       {
-        "label": "LinkedIn",
-        "href": "#"
+        "label": "Email",
+        "value": "naadedeiagbey@gmail.com",
+        "href": "mailto:naadedeiagbey@gmail.com"
       },
       {
-        "label": "Dribbble",
-        "href": "#"
+        "label": "Telephone",
+        "value": "+233 24 356 5190",
+        "href": "tel:+233243565190"
       },
       {
-        "label": "Instagram",
-        "href": "#"
+        "label": "Mobile",
+        "value": "+233 20 812 4700",
+        "href": "tel:+233208124700"
       },
       {
-        "label": "Contact",
-        "path": "/contact"
+        "label": "Address",
+        "value": "C 25, Able Academy Road, Kotobabi, Accra, Ghana"
+      },
+      {
+        "label": "Post Box",
+        "value": "Post Office Box KT 58, Kotobabi, Accra, Ghana"
       }
     ]
   }

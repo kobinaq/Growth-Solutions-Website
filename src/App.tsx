@@ -106,7 +106,7 @@ function App() {
         {activePage === "not-found" && <NotFoundPage navigate={navigate} />}
       </main>
 
-      <SiteFooter footer={siteContent.footer} navigate={navigate} />
+      <SiteFooter footer={siteContent.footer} navLinks={siteContent.navigation} navigate={navigate} />
     </div>
   );
 }

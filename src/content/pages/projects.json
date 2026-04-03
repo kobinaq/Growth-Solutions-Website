@@ -4,8 +4,8 @@
     "title": "Real impact. Real communities.",
     "intro": "Explore our work across Ghana - from water systems to renewable energy, from livelihood programs to governance strengthening.",
     "image": {
-      "src": "/projects/agroforestry-1.jpg",
-      "alt": "Projects"
+      "src": "/projects/fisheries_project.png",
+      "alt": "Community workshop taking place beside Ghana's coastline"
     }
   },
   "categories": [
@@ -16,7 +16,7 @@
           "title": "Sustainable Fisheries Management Project (SFMP)",
           "description": "Strengthened Nine (9) Civil Society Organizations in the Fishing Community capacity with Organisational Development solutions in the area of Governance, Financial Management, Human Resource Management Project Management, managing Partnership and External Relationships and leadership, Financial and Strategic Sustainable.",
           "image": {
-            "src": "/projects/project1-1.jpeg",
+            "src": "/projects/fisheries_project.png",
             "alt": "Sustainable Fisheries Management Project (SFMP)"
           },
           "stats": [
@@ -30,7 +30,7 @@
           "title": "Nationwide Assessment of the Ghana School Feeding Programme",
           "description": "Conducted national assessment to inform reform and Social Accountability in GSFP.",
           "image": {
-            "src": "/projects/ghana-school-feeding-assessment-1.jpg",
+            "src": "/projects/school_feeding_project.png",
             "alt": "Nationwide Assessment of the Ghana School Feeding Programme"
           }
         },
@@ -38,7 +38,7 @@
           "title": "NAFAG Organizational Development Support.",
           "description": "Supported NAFAG in developing key Organisational Development Document such as constitution updated Financial and Administrative Manual, Strategic plans and organization of national executive elections. The outcome was institutional reforms for fisheries governance in NAFAG",
           "image": {
-            "src": "/projects/project1-2.jpeg",
+            "src": "/projects/NAFAG_project.png",
             "alt": "NAFAG Organizational Development Support."
           }
         },
@@ -46,7 +46,7 @@
           "title": "Local Government Development Programme (LOGODEP)",
           "description": "Provided technical setup and pilot support for local governance programme in Western Region.",
           "image": {
-            "src": "/projects/project1-1.jpg",
+            "src": "/projects/logodep_project.png",
             "alt": "Local Government Development Programme (LOGODEP)"
           }
         },

@@ -1,4 +1,4 @@
-import { ArrowRight, ChevronRight, Mail, MessageCircle } from "lucide-react";
+import { ArrowRight, ChevronRight, Mail, Phone } from "lucide-react";
 import { useState, type FormEvent, type ReactNode } from "react";
 
 import { cn } from "@/lib/utils";
@@ -180,27 +180,31 @@ function PageHero({
   const paragraphs = Array.isArray(description) ? description : [description];
 
   return (
-    <PageBand tone="dark" className="pt-6">
-      <div className="grid items-end gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12">
-        <FadeIn>
-          {eyebrow ? <SectionLabel className="text-black/55">{eyebrow}</SectionLabel> : null}
-          <h1 className="site-title-xl mt-6 max-w-5xl">{title}</h1>
-          <div className="mt-8 max-w-2xl space-y-4">
+    <section className="relative isolate flex min-h-[72vh] w-full items-end overflow-hidden bg-[var(--color-black)] text-white md:min-h-[78vh] lg:min-h-[84vh]">
+      <img
+        src={image.src}
+        alt={image.alt}
+        className="absolute inset-0 h-full w-full object-cover"
+      />
+      <div className="absolute inset-0 bg-[linear-gradient(115deg,rgba(11,16,18,0.94)_14%,rgba(11,16,18,0.74)_42%,rgba(11,16,18,0.24)_72%,rgba(11,16,18,0.1)_100%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(11,16,18,0.18)_0%,rgba(11,16,18,0.16)_44%,rgba(11,16,18,0.78)_100%)]" />
+
+      <div className="site-shell relative z-10 w-full py-16 md:py-20 lg:py-24">
+        <FadeIn className="max-w-4xl">
+          {eyebrow ? <SectionLabel className="text-white/72">{eyebrow}</SectionLabel> : null}
+          <h1 className="site-title-xl mt-6 max-w-5xl text-white">{title}</h1>
+          <div className="mt-8 max-w-3xl space-y-4">
             {paragraphs.map((paragraph) => (
-              <p key={paragraph} className="site-copy-lg text-black/70">
+              <p key={paragraph} className="site-copy-lg text-white/84">
                 {paragraph}
               </p>
             ))}
           </div>
           {actions ? <div className="mt-10 flex flex-wrap gap-3">{actions}</div> : null}
-          {children ? <div className="mt-14">{children}</div> : null}
-        </FadeIn>
-
-        <FadeIn delay={0.08}>
-          <ImagePanel image={image} className="h-[420px] border-black/10 bg-black/[0.03] md:h-[560px]" />
+          {children ? <div className="mt-14 max-w-3xl">{children}</div> : null}
         </FadeIn>
       </div>
-    </PageBand>
+    </section>
   );
 }
 
@@ -214,18 +218,19 @@ export function HomePage({ navigate }: { navigate: (path: string) => void }) {
         image={homeContent.hero.image}
         actions={
           <>
-            <ActionButton action={homeContent.hero.primaryCta} navigate={navigate} />
+            <ActionButton action={homeContent.hero.primaryCta} navigate={navigate} tone="cream" />
             {homeContent.hero.secondaryCta ? (
               <ActionButton
                 action={homeContent.hero.secondaryCta}
                 navigate={navigate}
+                tone="cream"
                 secondary
               />
             ) : null}
           </>
         }
       >
-        <StatRow stats={homeContent.impactStats} />
+        <StatRow stats={homeContent.impactStats} tone="cream" />
       </PageHero>
 
       <PageBand tone="cream">
@@ -484,6 +489,26 @@ export function AboutPage({ navigate }: { navigate: (path: string) => void }) {
         </div>
       </PageBand>
 
+      <PageBand tone="grey">
+        <div className="grid gap-10 lg:grid-cols-[0.42fr_1.58fr]">
+          <FadeIn>
+            <SectionLabel className="text-black/55">{aboutContent.clients.title}</SectionLabel>
+            <h2 className="site-title-lg mt-5 max-w-4xl">{aboutContent.clients.description}</h2>
+          </FadeIn>
+          <div className="grid gap-3">
+            {aboutContent.clients.items.map((item, index) => (
+              <FadeIn
+                key={item}
+                delay={index * 0.03}
+                className="rounded-[16px] border border-black/10 bg-black/[0.03] px-5 py-5"
+              >
+                <p className="site-copy-sm text-black/68">{item}</p>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </PageBand>
+
       <PageBand tone="cream">
         <div className="grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
           <FadeIn>
@@ -512,8 +537,13 @@ export function ServicesPage({ navigate }: { navigate: (path: string) => void })
         image={servicesContent.hero.image}
         actions={
           <>
-            <ActionButton action={servicesContent.hero.primaryCta} navigate={navigate} />
-            <ActionButton action={servicesContent.hero.secondaryCta} navigate={navigate} secondary />
+            <ActionButton action={servicesContent.hero.primaryCta} navigate={navigate} tone="cream" />
+            <ActionButton
+              action={servicesContent.hero.secondaryCta}
+              navigate={navigate}
+              tone="cream"
+              secondary
+            />
           </>
         }
       />
@@ -756,6 +786,9 @@ export function ContactPage({ navigate }: { navigate: (path: string) => void }) 
   const [email, setEmail] = useState("");
   const [topic, setTopic] = useState(contactContent.consultationTopics[0] ?? "");
   const [message, setMessage] = useState("");
+  const quickContact =
+    contactContent.channels.find((channel) => channel.title === "Mobile") ??
+    contactContent.channels.find((channel) => channel.title === "Telephone");
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -773,7 +806,7 @@ export function ContactPage({ navigate }: { navigate: (path: string) => void }) 
 
     const emailLink =
       contactContent.channels.find((channel) => channel.title === "Email")?.value ??
-      "hello@growthsolutions.example";
+      "naadedeiagbey@gmail.com";
 
     window.location.href = `mailto:${emailLink}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   };
@@ -876,23 +909,19 @@ export function ContactPage({ navigate }: { navigate: (path: string) => void }) 
                   <Mail className="h-4 w-4" />
                   Draft Email
                 </Button>
-                <Button
-                  type="button"
-                  variant="outline"
-                  className="site-label inline-flex items-center gap-2 rounded-[16px] border border-white/20 bg-transparent px-5 py-4 text-white hover:bg-white/10"
-                  onClick={() => {
-                    const whatsappLink = contactContent.channels.find(
-                      (channel) => channel.title === "WhatsApp"
-                    )?.href;
-
-                    if (whatsappLink) {
-                      window.open(whatsappLink, "_blank", "noopener,noreferrer");
-                    }
-                  }}
-                >
-                  <MessageCircle className="h-4 w-4" />
-                  Open WhatsApp
-                </Button>
+                {quickContact?.href ? (
+                  <Button
+                    type="button"
+                    variant="outline"
+                    className="site-label inline-flex items-center gap-2 rounded-[16px] border border-white/20 bg-transparent px-5 py-4 text-white hover:bg-white/10"
+                    onClick={() => {
+                      window.location.href = quickContact.href;
+                    }}
+                  >
+                    <Phone className="h-4 w-4" />
+                    Call {quickContact.title}
+                  </Button>
+                ) : null}
               </div>
             </form>
           </FadeIn>

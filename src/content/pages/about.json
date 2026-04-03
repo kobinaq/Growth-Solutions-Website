@@ -4,13 +4,13 @@
     "title": "Building capacity. Empowering communities.",
     "description": "Growth Solutions works at the intersection of strategy, systems, and local leadership to help communities shape sustainable futures.",
     "image": {
-      "src": "/community-development-ghana-sustainable-projects.jpg",
-      "alt": "Community-led development activity in Ghana"
+      "src": "/About.png",
+      "alt": "Growth Solutions team meeting in a bright office"
     }
   },
   "about": {
     "title": "Growth Solutions is a social enterprise offering services to provide sustenance in a meaningful way with the right intervention strategies for local communities.",
-    "description": "Growth Solutions is a social enterprise offering services to provide sustenance in a meaningful way with the right intervention strategies for local communities."
+    "description": "Growth Solutions is a social enterprise offering services to provide sustenance in a meaningful way with the right intervention strategies for local communities. Our practitioners bring experience in regional planning, organisational development, business development, governance, and training."
   },
   "ethos": {
     "title": "Our Ethos",
@@ -72,6 +72,16 @@
       "src": "/partners/usaid.jpg"
     }
   ],
+  "clients": {
+    "title": "Who We Support",
+    "description": "Growth Solutions works across sectors, helping institutions and community-facing organisations turn strategy into sustainable impact.",
+    "items": [
+      "Public sector institutions",
+      "Corporate Ghana",
+      "NGOs",
+      "International development organisations"
+    ]
+  },
   "partnersCta": {
     "eyebrow": "Trusted Partners",
     "title": "Let us work together",

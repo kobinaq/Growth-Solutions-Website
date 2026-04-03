@@ -124,15 +124,17 @@ function HeaderLink({
 
 export function SiteFooter({
   footer,
+  navLinks,
   navigate,
 }: {
   footer: SiteContent["footer"];
+  navLinks: SiteLink[];
   navigate: (path: string) => void;
 }) {
   return (
     <footer className="border-t border-white/10 bg-[#212325] text-white">
       <div className="site-shell py-16">
-        <div className="grid gap-12 lg:grid-cols-[1.2fr_0.8fr_0.8fr]">
+        <div className="grid gap-12 lg:grid-cols-[1.2fr_0.8fr_1fr]">
           <div className="max-w-xl">
             <p className="site-label text-white/60">Community-led development</p>
             <h2 className="site-title-md mt-5">Growth Solutions</h2>
@@ -145,34 +147,35 @@ export function SiteFooter({
           <div>
             <p className="site-label text-white/60">Navigation</p>
             <div className="mt-5 grid gap-3">
-              {footer.links
-                .filter((link) => link.path)
-                .map((link) => (
-                  <a
-                    key={link.label}
-                    href={link.href ?? link.path ?? "#"}
-                    onClick={(event) => handleLinkClick(event, link, navigate)}
-                    className="site-copy-sm text-white/70 hover:text-white"
-                  >
-                    {link.label}
-                  </a>
-                ))}
-            </div>
-          </div>
-
-          <div>
-            <p className="site-label text-white/60">Connect</p>
-            <div className="mt-5 grid gap-3">
-              {footer.links.map((link) => (
+              {navLinks.map((link) => (
                 <a
                   key={link.label}
                   href={link.href ?? link.path ?? "#"}
                   onClick={(event) => handleLinkClick(event, link, navigate)}
-                  target={isExternalLink(link.href) ? "_blank" : undefined}
-                  rel={isExternalLink(link.href) ? "noreferrer" : undefined}
                   className="site-copy-sm text-white/70 hover:text-white"
                 >
                   {link.label}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <p className="site-label text-white/60">Contact</p>
+            <div className="mt-5 grid gap-3">
+              {footer.contactLinks.map((link) => (
+                <a
+                  key={`${link.label}-${link.value}`}
+                  href={link.href ?? "#"}
+                  target={isExternalLink(link.href) ? "_blank" : undefined}
+                  rel={isExternalLink(link.href) ? "noreferrer" : undefined}
+                  className={cn(
+                    "site-copy-sm text-white/70",
+                    link.href ? "hover:text-white" : "cursor-default"
+                  )}
+                >
+                  <span className="site-label mr-2 text-white/45">{link.label}</span>
+                  {link.value}
                 </a>
               ))}
             </div>

@@ -15,8 +15,8 @@
       "path": "/contact"
     },
     "image": {
-      "src": "/hero-bg.jpg",
-      "alt": "Community-led development work in Ghana"
+      "src": "/Home.png",
+      "alt": "Aerial view of a thriving rural Ghanaian community at sunrise"
     }
   },
   "manifesto": {
@@ -92,6 +92,10 @@
       {
         "title": "Governance",
         "description": "Promoting transparent, participatory, and inclusive governance structures that empower communities to make informed decisions and manage local resources responsibly."
+      },
+      {
+        "title": "Livelihood and Local Enterprise",
+        "description": "Supporting communities to identify their comparative advantages, strengthen local enterprise, and create economic opportunities rooted in available resources and practical market pathways."
       },
       {
         "title": "Gender and Social Inclusion",

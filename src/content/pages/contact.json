@@ -4,28 +4,34 @@
     "title": "Let's shape the right support for your next initiative.",
     "description": "Whether you need participatory planning, organisational development, MEL support, or a thought partner for implementation, we can start with a focused conversation.",
     "image": {
-      "src": "/projects/ada-water-2.jpg",
-      "alt": "Community water infrastructure project"
+      "src": "/contact.png",
+      "alt": "Community discussion circle near the coast at sunset"
     }
   },
   "channels": [
     {
       "title": "Email",
-      "value": "hello@growthsolutions.example",
-      "href": "mailto:hello@growthsolutions.example",
+      "value": "naadedeiagbey@gmail.com",
+      "href": "mailto:naadedeiagbey@gmail.com",
       "note": "Best for proposals, partnership ideas, and detailed briefs."
     },
     {
-      "title": "WhatsApp",
-      "value": "+233 00 000 0000",
-      "href": "https://wa.me/233000000000",
-      "note": "Useful for quick questions and follow-ups."
+      "title": "Telephone",
+      "value": "+233 24 356 5190",
+      "href": "tel:+233243565190",
+      "note": "Use this line for office calls and direct inquiries."
     },
     {
-      "title": "LinkedIn",
-      "value": "Growth Solutions",
-      "href": "#",
-      "note": "A simple way to stay connected and see updates."
+      "title": "Mobile",
+      "value": "+233 20 812 4700",
+      "href": "tel:+233208124700",
+      "note": "A good option for quick follow-ups and urgent coordination."
+    },
+    {
+      "title": "Address",
+      "value": "C 25, Able Academy Road, Kotobabi, Accra, Ghana",
+      "href": "https://maps.google.com/?q=C+25+Able+Academy+Road+Kotobabi+Accra+Ghana",
+      "note": "Postal correspondence can be directed to Post Office Box KT 58, Kotobabi, Accra, Ghana."
     }
   ],
   "consultationTopics": [
@@ -37,11 +43,11 @@
   ],
   "officeNote": {
     "title": "How we usually begin",
-    "description": "Most engagements start with a short discovery conversation. From there, we can shape a scoped consultation, workshop, assessment, or implementation support plan."
+    "description": "Most engagements start with a short discovery conversation. From there, we shape a scoped consultation, workshop, assessment, or implementation support plan rooted in local realities and practical next steps."
   },
   "cta": {
     "title": "Need to share more context first?",
-    "description": "Use the inquiry form on this page to draft an email with your project details. You can update the email and WhatsApp values in this JSON file anytime.",
+    "description": "Use the inquiry form on this page to draft an email with your project details, timeline, and support needs.",
     "primary": {
       "label": "View Services",
       "path": "/services"

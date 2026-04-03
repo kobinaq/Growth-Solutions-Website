@@ -124,6 +124,11 @@ export type AboutContent = {
     }>;
   };
   partnerLogos: PartnerLogo[];
+  clients: {
+    title: string;
+    description: string;
+    items: string[];
+  };
   partnersCta: {
     eyebrow: string;
   } & SharedCta;
@@ -212,6 +217,10 @@ export type SiteContent = {
   navigation: SiteLink[];
   footer: {
     copyright: string;
-    links: SiteLink[];
+    contactLinks: Array<{
+      label: string;
+      value: string;
+      href?: string;
+    }>;
   };
 };
